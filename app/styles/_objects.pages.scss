@@ -1,0 +1,41 @@
+html,
+body {
+  height: 100%;
+}
+.o-pages {
+  &__home {
+     overflow: hidden;
+    position: relative;
+    background-color: $c-yellow-base;
+  }
+}
+
+.o-artwork {
+ 
+  &__copy {
+   @include coverer;
+   z-index: 30;
+   background-color: #fff;
+   h1 {
+     @include vert-centerer;
+     text-align: center;
+     margin: 0;
+     font-size: 400px;
+     font-weight: bold;
+     display: block;
+     text-transform: uppercase;
+     border-radius: 50%;
+   }
+ 
+  }
+}
+ 
+
+.blend {
+  &--multiply {
+    mix-blend-mode: multiply;
+  }
+  &--screen {
+    mix-blend-mode: screen;
+  }
+}

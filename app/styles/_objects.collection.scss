@@ -1,0 +1,19 @@
+.o-wrapper {
+  height: 100%;
+  position: relative;
+}
+
+.o-header {
+  width: 100%;
+  z-index: 20;
+}
+
+.o-social {
+  padding: 1em 0;
+  text-align: right;
+  &__item {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
