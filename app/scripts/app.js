@@ -3,7 +3,7 @@ var App = (function (window, $) {
   'use strict';
 
   var
-  
+
     md = new MobileDetect(window.navigator.userAgent),
 
     elementType = md.mobile() ? '<img>' : '<video>',
@@ -13,20 +13,21 @@ var App = (function (window, $) {
     element = $(elementType, {}),
 
     root = $('#root'),
-    
+
     container = root.find('.o-artwork__container'),
+    
+    jsMouse = $('.js-mouse-follower'),
 
     width = $(window).width(),
 
     height = $(window).height(),
 
     init = function () {
-
-
-      createScene();
+      cache();
+      bind();
     },
 
-    createScene = function () {
+    cache = function () {
 
       element.attr('src', elementSrc);
 
@@ -35,15 +36,41 @@ var App = (function (window, $) {
         element.attr('loop', 'loop');
       }
 
-
       container.append(element);
-
-      setFullScreen();
-
     },
 
-    setFullScreen = function () {
+    bind = function () {
       
+      var resizeTimeout;
+      $(window).on('resize', function () {
+        clearTimeout(resizeTimeout);
+
+        resizeTimeout = setTimeout(function () {
+          updateLayout();
+        }, 100);
+
+      });
+      updateLayout();
+      
+      $('body').on(Modernizr.touch ? 'touchmove': 'mousemove', function (e) {
+        
+        var mouseX = e.pageX - jsMouse.width()/2,
+            mouseY = e.pageY - jsMouse.height()/2;
+            
+        if(!jsMouse.is(':visible')) {
+          jsMouse.show();
+        }
+        
+        
+        TweenMax.to(jsMouse, .4, {
+            x: mouseX,
+            y: mouseY
+        })
+      })
+    },
+
+    updateLayout = function () {
+
       var windowWidth = $(window).width(),
         windowHeight = $(window).height(),
         aspectRatio = Math.min(windowWidth / element.width(), windowHeight / element.height());
@@ -79,9 +106,7 @@ var App = (function (window, $) {
 
     };
 
-
-
-
+  // public API
   return {
     init: init
   }
