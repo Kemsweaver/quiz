@@ -3,10 +3,12 @@ var App = (function (window, $) {
   'use strict';
 
   var
+  
+    md = new MobileDetect(window.navigator.userAgent),
 
-    elementType = Modernizr.touch ? '<img>' : '<video>',
+    elementType = md.mobile() ? '<img>' : '<video>',
 
-    elementSrc = Modernizr.touch ? 'images/cover.jpg' : 'media/teaser.mp4',
+    elementSrc = md.mobile() ? 'images/cover.jpg' : 'media/teaser.mp4',
 
     element = $(elementType, {}),
 
@@ -25,7 +27,7 @@ var App = (function (window, $) {
     },
 
     createScene = function () {
-      console.log(Modernizr.touch);
+
       element.attr('src', elementSrc);
 
       if ('autoplay' in element[0]) {
@@ -36,12 +38,7 @@ var App = (function (window, $) {
 
       container.append(element);
 
-      // element.attr('src', elementSrc);
-      // element.css({ position:'absolute' });
-
       setFullScreen();
-
-
 
     },
 
