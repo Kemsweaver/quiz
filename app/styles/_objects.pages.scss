@@ -8,6 +8,16 @@ body {
     position: relative;
     background-color: $c-yellow-base;
   }
+  
+  &__base {
+    &:after {
+      @include coverer;
+      content: '';
+      pointer-events: none;
+      background: $c-yellow-base url('../images/pat-fans.png') repeat-x center 100%;
+      z-index: 0; 
+    } 
+  }  
 }
 
 .o-artwork {
@@ -49,3 +59,7 @@ body {
     mix-blend-mode: screen;
   }
 }
+
+.o-base {
+  padding-top: 6em;
+} 
