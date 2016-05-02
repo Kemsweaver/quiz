@@ -123,7 +123,6 @@ var App = (function (window, $) {
         loop: true,
         keyboard: false
       });
-
     },
 
     getReady = function () {
@@ -135,6 +134,7 @@ var App = (function (window, $) {
         $('.o-pages__home').fadeOut('slow');
         $
       }; 
+
 
   // public API
   return {

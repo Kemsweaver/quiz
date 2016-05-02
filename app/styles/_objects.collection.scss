@@ -74,3 +74,45 @@ strong {
     } 
   }
 } 
+
+
+.o-button {
+  display: inline-block;
+  vertical-align: middle;
+  color: white;
+  background-color: $c-fb-blue-base;
+  text-decoration: none;
+  font-family: 'Acronym-Regular';
+  transition: all 200ms ease;
+  margin-top: 3em;
+  &__caret,
+  &__label {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 1em;
+  }  
+  
+  &__caret {
+    background-color: $c-fb-blue-dark;
+  }
+  &__label {
+    font-size: 12px;
+    line-height: 12px;
+    padding-right: 2em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+ 
+  &__fb-short {
+    display: block;
+    background: url('../images/fb-short.svg') no-repeat;
+    width: 10px;
+    height: 18px;
+  }
+  &:hover {
+    text-decoration: none;
+    color: white;
+    background-color: $c-fb-blue-dark;
+  }
+}
