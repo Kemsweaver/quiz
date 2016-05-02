@@ -123,7 +123,7 @@ var App = (function (window, $) {
         keyboard: false
       });
 
-    } 
+    }; 
 
   // public API
   return {
