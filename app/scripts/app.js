@@ -126,13 +126,17 @@ var App = (function (window, $) {
     },
 
     getReady = function () {
-      var finputs = $('.quiz_section').not('.slide1, .slide2').hide();
-      console.log(finputs);
+      var $finputs = $('.quiz_section').not('.slide1, .slide2').hide();
+      $('.comenzar').click(function () {
+        $finputs.fadeOut(500, 'ease', function () {
+          $('.slide3').fadeIn('slow');
+        });
+        $('[class^="o-form"]').filter('.active').removeClass('active');
+        $('.o-form__quest').addClass('active');
+      });
     },
 
       loadForms = function () {
-        $('.o-pages__home').fadeOut('slow');
-        $
       }; 
 
 
