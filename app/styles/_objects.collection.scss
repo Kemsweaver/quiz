@@ -17,3 +17,59 @@
   }
 }
 
+
+strong {
+  font-family: Acronym-Bold;
+} 
+
+.o-base {
+  &__title {
+    font-family: 'Acronym-ExtraBold';
+    font-size: 40px;
+    color: black;
+    > small {
+      font-size: 24px;
+      color: black;
+      padding-right: 0.5em;
+    }
+  }
+  
+  ul, p {
+    font-family: 'Acronym-Light';
+    font-size: 16px;
+  }
+} 
+
+.o-fly {
+  display: block;
+  width: 298px;
+  height: 32px;
+  background: url('../images/fly.png') no-repeat;
+  &--left {
+    float: left;
+  }
+  &--right {
+    float: right;
+  }
+}
+
+.onepage-pagination {
+   li {
+    a {
+      transition: all 100ms ease-in;
+      
+      &.active {
+        &:hover {
+          &:before {
+            border-color: #fff;
+            background-color: transparent;
+          } 
+          }
+      }
+      
+        
+        
+      
+    } 
+  }
+} 

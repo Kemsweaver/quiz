@@ -11,6 +11,8 @@ var App = (function (window, $) {
     elementSrc = md.mobile() ? 'images/cover.jpg' : 'media/teaser.mp4',
 
     element = $(elementType, {}),
+    
+    main = $('main.o-pages'),
 
     root = $('#root'),
 
@@ -34,9 +36,12 @@ var App = (function (window, $) {
       if ('autoplay' in element[0]) {
         element.attr('autoplay', 'autoplay');
         element.attr('loop', 'loop');
+        element.attr('muted', 'muted');
       }
 
       container.append(element);
+      
+      enableOnePage();
     },
 
     bind = function () {
@@ -66,15 +71,19 @@ var App = (function (window, $) {
             x: mouseX,
             y: mouseY
         })
-      })
+      });
     },
 
     updateLayout = function () {
+      
+      console.log('updateLayout');
 
       var windowWidth = $(window).width(),
         windowHeight = $(window).height(),
         aspectRatio = Math.min(windowWidth / element.width(), windowHeight / element.height());
-
+     
+     element.css('');
+     
       element.css({
         'min-height': 0,
         'min-width': 0,
@@ -85,7 +94,7 @@ var App = (function (window, $) {
 
       var shift = 0;
       if (windowWidth / windowHeight > aspectRatio) {
-        element.width(windowWidth).height('auto');
+        element.width(windowWidth).height('100%');
         // shift the element up
         var height = element.height();
         shift = (height - windowHeight) / 2;
@@ -94,7 +103,7 @@ var App = (function (window, $) {
         }
         element.css("top", -shift);
       } else {
-        element.width('auto').height(windowHeight);
+        element.width('100%').height(windowHeight);
         // shift the element left
         var width = element.width();
         shift = (width - windowWidth) / 2;
@@ -104,7 +113,17 @@ var App = (function (window, $) {
         element.css("left", -shift);
       }
 
-    };
+    },
+    
+    enableOnePage = function (){
+      main.onepage_scroll({
+        sectionContainer: "section.o-page",
+        responsiveFallback: 600,
+        loop: true,
+        keyboard: false
+      });
+
+    } 
 
   // public API
   return {

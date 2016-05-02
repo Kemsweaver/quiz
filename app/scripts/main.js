@@ -2,6 +2,11 @@
   
   'use strict';
   
-  App.init();
+  var domBody = $('body');
+  if(domBody.hasClass('page--home')){
+    App.init();
+  }
+  
+  
   
 })(window);

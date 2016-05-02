@@ -7,7 +7,9 @@ $icon-font-path: '../fonts/';
 // endbower
 
 @import "settings.config";
+@import "tools.mixins";
 
+@import "objects.typo";
 @import "objects.list-bare";
 @import "objects.pages";
 @import "objects.collection";

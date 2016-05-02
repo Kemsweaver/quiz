@@ -12,6 +12,7 @@
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/fontawesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="/bower_components/onepage-scroll/onepage-scroll.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -23,7 +24,7 @@
     <script src="/bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
   </head>
-  <body>
+  <body class="page--home">
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -44,13 +45,46 @@
         </div>
       </header>
       <main role="main" class="o-pages">
-        <section class="o-pages__home">
+        <section class="o-page o-pages__home">
           <div id="root" class="o-artwork blend--multiply">
-            <div class="o-artwork__container"></div>
+            <div class="o-artwork__container u-relative"></div>
             <div class="o-artwork__copy blend--screen">
               <div class="js-mouse-follower"></div>
               <div class="container">
                 <img src="images/brand.svg" alt="" id="brand">
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <section class="o-page o-pages__base">
+          <div class="u-vert-center">
+            <div class="u-relative container">
+              <div class="row">
+                <article class="col-md-6">
+                  <div class="o-base">
+                    <h3 class="o-base__title"><small>1.</small>Dinámica</h3>
+                    <ul>
+                      <li>Completar Registro </li>
+                      <li>Contestar cuatro preguntas </li>
+                      <li>Dale “Follow” a <strong>MundoMexSports</strong> y <strong>REFEREE</strong>.</li>
+                      <li>Tuitear con el  #hashtag oficial </li>
+                    </ul>
+                    <span class="o-fly o-fly--left"></span>
+                  </div>
+                </article>
+              </div>
+              
+              <div class="row">
+                <div class="o-base">
+                  <article class="col-md-6 col-md-offset-6">
+                    <h3 class="o-base__title"><small>2.</small>Premio</h3>
+                    <p>Las primeras 10 personas que cumplan con todos 
+                      los pasos, se llevarán un pase doble para asistir
+                      a la fiesta MundoMex Rumbo a Rusia.</p>
+                    <span class="o-fly o-fly--right"></span>                      
+                  </article>
+                </div>
               </div>
             </div>
           </div>
@@ -70,9 +104,10 @@
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/jquery/jquery.js"></script>
     <script src="/bower_components/mobile-detect/mobile-detect.js"></script>
     <script src="/bower_components/gsap/src/uncompressed/TweenMax.js"></script>
+    <script src="/bower_components/onepage-scroll/jquery.onepage-scroll.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     

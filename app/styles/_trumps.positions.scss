@@ -9,3 +9,8 @@
 .u-absolute {
   position: absolute;
 }
+
+.u-vert-center {
+  @include vert-centerer;
+  z-index: 20;
+} 
