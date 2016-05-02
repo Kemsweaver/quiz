@@ -115,3 +115,26 @@ strong {
     background-color: $c-fb-blue-dark;
   }
 }
+
+.o-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  line-height: 80px;
+  background: url('../images/pat-grass.png') repeat-x;
+}
+
+.o-brand {
+  display: block;
+  width: 100px;
+  height: 48px;
+  @include clean;
+  &__logo {
+    display: block;
+    width: 100px;
+    height: 48px;
+    background: url('../images/mundomex-logo.svg') no-repeat center center;
+    @include hide-text;
+  }
+} 
