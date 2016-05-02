@@ -22,7 +22,8 @@ strong {
   font-family: Acronym-Bold;
 } 
 
-.o-base {
+.o-base,
+.o-f{
   &__title {
     font-family: 'Acronym-ExtraBold';
     font-size: 40px;

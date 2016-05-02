@@ -63,4 +63,51 @@ body {
 
 .o-base {
   padding-top: 6em;
-} 
+}
+
+#quizForm1 {
+  .quiz_section {
+    span {
+      display: block;
+      font-family: 'Acronym-ExtraBold';
+      width: 100%;
+      font-size: 20px;
+      color: black;
+    }
+    input {
+      border: 2px solid black;
+      border-radius: 0;
+      background: transparent;
+      padding: 8px 10px;
+      margin: 2px 0 1px;
+      width: 100%;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.controls {
+  .segundo,
+  .primero {
+    display: none;
+    opacity: 0;
+    transition: 400ms opacity ease-in;
+    &.active {
+      display: block;
+      opacity: 1;
+      transition: 400ms opacity ease-out;
+    }
+  }
+  input[type="checkbox"] {
+    color: black;
+  }
+  button {
+    color: black;
+    background: #F0E000;
+    border: 2px solid black;
+    border-radius: 0;
+    display: block;
+  }
+}
