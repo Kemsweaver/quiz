@@ -18,9 +18,9 @@ var App = (function (window, $) {
     
     jsMouse = $('.js-mouse-follower'),
 
-    width = $(window).width(),
+    //width = $(window).width(),
 
-    height = $(window).height(),
+    //height = $(window).height(),
 
     init = function () {
       cache();
@@ -104,11 +104,19 @@ var App = (function (window, $) {
         element.css("left", -shift);
       }
 
-    };
+    },
+      
+      loadForms = function () {
+        $('.o-pages__home').fadeOut('slow');
+        $
+      };
+
+  
 
   // public API
   return {
-    init: init
+    init: init,
+    loadForms: loadForms
   }
 
 })(window, jQuery);
