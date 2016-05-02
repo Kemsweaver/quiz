@@ -120,7 +120,7 @@ var App = (function (window, $) {
       main.onepage_scroll({
         sectionContainer: "section.o-page",
         responsiveFallback: 600,
-        loop: true,
+        loop: false,
         keyboard: false
       });
     },
