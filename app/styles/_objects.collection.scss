@@ -19,7 +19,7 @@
 
 
 strong {
-  font-family: Acronym-Bold;
+  font-family: 'Acronym-Bold';
 } 
 
 .o-base,
@@ -75,6 +75,29 @@ strong {
   }
 } 
 
+.o-copy {
+  &__headline,
+  &__accent {
+    font-family: 'Acronym-ExtraBold';
+    text-transform: uppercase;
+    color: black;
+    margin: 0;
+  }
+  
+  &__headline {
+    font-size: 64px;
+    line-height: 64px;
+  }
+  &__accent {
+    font-size: 32px;
+  }
+} 
+
+.o-front {
+  @include coverer;
+  z-index: 50;
+}
+
 
 .o-button {
   display: inline-block;
@@ -122,12 +145,29 @@ strong {
   bottom: 0;
   width: 100%;
   height: 80px;
-  line-height: 80px;
+  text-align: center;
   background: url('../images/pat-grass.png') repeat-x;
+  &__terms {
+    display: inline-block;
+    vertical-align: text-bottom;
+    text-decoration: none;
+    color: black;
+    font-family: 'Acronym-Bold';
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 12px;  
+    border-bottom: 2px solid black;
+    margin-left: 1em;
+    &:hover {
+      text-decoration: none;
+      color: black;
+    } 
+  }
 }
 
 .o-brand {
-  display: block;
+  display: inline-block;
+  vertical-align: text-bottom;
   width: 100px;
   height: 48px;
   @include clean;
