@@ -20,13 +20,14 @@ var App = (function (window, $) {
     
     jsMouse = $('.js-mouse-follower'),
 
-    width = $(window).width(),
+    //width = $(window).width(),
 
-    height = $(window).height(),
+    //height = $(window).height(),
 
     init = function () {
       cache();
       bind();
+      getReady();
     },
 
     cache = function () {
@@ -122,12 +123,23 @@ var App = (function (window, $) {
         loop: true,
         keyboard: false
       });
+    },
 
-    }; 
+    getReady = function () {
+      var finputs = $('.quiz_section').not('.slide1, .slide2').hide();
+      console.log(finputs);
+    },
+
+      loadForms = function () {
+        $('.o-pages__home').fadeOut('slow');
+        $
+      }; 
+
 
   // public API
   return {
-    init: init
+    init: init,
+    loadForms: loadForms
   }
 
 })(window, jQuery);
