@@ -9,7 +9,8 @@ body {
     background-color: $c-yellow-base;
   }
   
-  &__base {
+  &__base,
+  &__form {
     &:after {
       @include coverer;
       content: '';

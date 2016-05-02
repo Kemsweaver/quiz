@@ -27,6 +27,7 @@ var App = (function (window, $) {
     init = function () {
       cache();
       bind();
+      getReady();
     },
 
     cache = function () {
@@ -123,6 +124,11 @@ var App = (function (window, $) {
         keyboard: false
       });
 
+    },
+
+    getReady = function () {
+      var finputs = $('.quiz_section').not('.slide1, .slide2').hide();
+      console.log(finputs);
     },
 
       loadForms = function () {
