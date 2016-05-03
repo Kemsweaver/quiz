@@ -173,11 +173,25 @@ strong {
   
   &__caret {
     background-color: $c-fb-blue-dark;
+    position: relative;
+    &:after {
+      content: ' ';
+      position: absolute;
+      width: 0;
+      height: 0;
+      top: 0;
+      right: -14px;
+      border-right: 14px solid transparent;
+      border-top: 46px solid #24469F;
+      border-bottom: none;
+      border-left: 0 solid #24469F;
+    }
   }
   &__label {
     font-size: 12px;
     line-height: 12px;
     padding-right: 2em;
+    padding-left: 2em;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     text-align: center;
@@ -222,6 +236,18 @@ strong {
     }
      .o-button__caret {
       background-color: black;
+       &:after {
+         content: ' ';
+         position: absolute;
+         width: 0;
+         height: 0;
+         top: 0;
+         right: -14px;
+         border-right: 14px solid transparent;
+         border-top: 46px solid black;
+         border-bottom: none;
+         border-left: 0 solid black;
+       }
     }
     &:hover {
       background-color:black;
