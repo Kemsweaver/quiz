@@ -6,6 +6,7 @@ body {
   &__home {
      overflow: hidden;
     position: relative;
+    height: 100vh;
     background-color: $c-yellow-base;
   }
   
