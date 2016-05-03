@@ -11,17 +11,17 @@ var App = (function (window, $) {
     elementSrc = md.mobile() ? 'images/cover.jpg' : 'media/teaser.mp4',
 
     element = $(elementType, {}),
-    
+
     main = $('main.o-pages'),
 
     root = $('#root'),
-    
+
     btnDown = $('a.o-button--cta'),
-    
+
     mask = $('.o-mask'),
 
     container = root.find('.o-artwork__container'),
-    
+
     jsMouse = $('.js-mouse-follower'),
 
     //width = $(window).width(),
@@ -46,11 +46,14 @@ var App = (function (window, $) {
 
       container.append(element);
       
+      
       enableOnePage();
+      
+      
     },
 
     bind = function () {
-      
+
       var resizeTimeout;
       $(window).on('resize', function () {
         clearTimeout(resizeTimeout);
@@ -60,42 +63,45 @@ var App = (function (window, $) {
         }, 100);
 
       });
-      
+
       btnDown.click(function (evt) {
         evt.preventDefault();
         main.moveTo(2);
       });
-      
-      
+
+
       updateLayout();
-      
-      $('body').on(Modernizr.touch ? 'touchmove': 'mousemove', function (e) {
+
+      $('body').on('touchmove mousemove', function (e) {
+        var currentY = e.originalEvent.touches ?  e.originalEvent.touches[0].pageY : e.pageY;
+        var currentX = e.originalEvent.touches ?  e.originalEvent.touches[0].pageX : e.pageX;
         
-        var mouseX = e.pageX - jsMouse.width()/2,
-            mouseY = e.pageY - jsMouse.height()/2;
-            
-        if(!jsMouse.is(':visible')) {
+        var mouseX = currentX - jsMouse.width() / 2,
+          mouseY = currentY - jsMouse.height() / 2;
+
+        if (!jsMouse.is(':visible')) {
           jsMouse.show();
         }
-        
-        
+
+
         TweenMax.to(jsMouse, .4, {
-            x: mouseX,
-            y: mouseY
+          x: mouseX,
+          y: mouseY
         })
       });
     },
 
+
     updateLayout = function () {
-      
+
       console.log('updateLayout');
 
       var windowWidth = $(window).width(),
         windowHeight = $(window).height(),
         aspectRatio = Math.min(windowWidth / element.width(), windowHeight / element.height());
-     
-     element.css('');
-     
+
+      element.css('');
+
       element.css({
         'min-height': 0,
         'min-width': 0,
@@ -126,18 +132,19 @@ var App = (function (window, $) {
       }*/
 
     },
-    
-    enableOnePage = function (){
+
+    enableOnePage = function () {
       main.onepage_scroll({
         sectionContainer: "section.o-page",
         responsiveFallback: 600,
         loop: false,
+        updateURL: true,
         keyboard: false,
-        beforeMove : function (index) {
-          
+        beforeMove: function (index) {
+
         },
-        afterMove : function (index) {
-         
+        afterMove: function (index) {
+
         }
       });
     },
@@ -156,7 +163,7 @@ var App = (function (window, $) {
           }
         });
 
-        if ( !isEmail( $('.mlwEmail').val() ) ) {
+        if (!isEmail($('.mlwEmail').val())) {
           flag = false;
           $('.mlwEmail').addClass('error');
         } else {
@@ -169,7 +176,7 @@ var App = (function (window, $) {
         }
         */
 
-        if ( flag ){
+        if (flag) {
           $slids.fadeOut(500, function () {
             $('.slide3').fadeIn('slow');
           });
@@ -177,7 +184,7 @@ var App = (function (window, $) {
           $('.o-form__quest').addClass('active');
           $('.o-control').filter('.active').removeClass('active');
           $('.o-control.segundo').addClass('active');
-          $('.nexxt').data('quest',3);
+          $('.nexxt').data('quest', 3);
         } else {
           console.log('faltan campos');
         }
@@ -211,16 +218,16 @@ var App = (function (window, $) {
               }
               $data = $data + 1;
               $('.slide' + $data).fadeIn('slow');
-              $this.data( 'quest', $data );
+              $this.data('quest', $data);
             });
-          } 
+          }
         }
 
       })
     },
 
-      loadForms = function () {
-      };
+    loadForms = function () {
+    };
 
   function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
