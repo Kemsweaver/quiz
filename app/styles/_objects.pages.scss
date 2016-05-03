@@ -121,7 +121,8 @@ div[class^="o-form"] {
       opacity: 1;
       transition: 400ms opacity ease-out;
     }
-    p {
+    p.mensaje {
+      display: none;
       margin-top: 20px;
     }
   }
@@ -234,6 +235,21 @@ div[class^="o-form"] {
         border-bottom: none;
         border-right: 13px solid transparent;
         z-index: 2;
+      }
+      &:hover {
+        background: black;
+        color: #F0E000;
+        &:after {
+          border-top: 35px solid black;
+          border-left: 0 solid black;
+        }
+        span:after {
+          border-bottom: 35px solid black;
+          border-right: 0 solid black;
+        }
+      }
+      &:active {
+        color: #BDBB97;
       }
       i {
         position: absolute;

@@ -150,9 +150,9 @@ var App = (function (window, $) {
     },
 
     getReady = function () {
-      $('.descubre').click(function () {
-        $('.onepage-pagination li:nth-child(2) a').click();
-      });
+
+      $('.descubre').click(function () { $('.onepage-pagination li:nth-child(2) a').click(); });
+
       $('.registro').click(function () {
         $('.onepage-pagination li:nth-child(3) a').click();
       });
@@ -175,9 +175,13 @@ var App = (function (window, $) {
         } else {
           $('.mlwEmail').removeClass('error');
         }
-        if ( !$('#terms').attr('checked') ) {
-          $('.primero').append('<p>Debes aceptar los terminos de Mundomex</p>');
+
+        if ( !$('#terms').is(':checked') ) {
           flag = false;
+          $('.primero .mensaje').fadeIn('fast').html('Debes aceptar los terminos de Mundomex');
+          setTimeout(function () {
+            $('.primero .mensaje').fadeOut('slow');
+          },5000);
         }
 
         if (flag) {
@@ -211,12 +215,13 @@ var App = (function (window, $) {
                     $('.slide' + $data).find('textarea').addClass('error');
                     console.log('vacio');
                   } else {
-                    $('.slide' + $data).fadeOut(600);
-                    $('[class^="o-form"]').filter('.active').removeClass('active');
-                    $('.o-form__thanks').addClass('active');
-                    $('.o-control').filter('.active').removeClass('active');
-                    //$('.qmn_btn').click();
-                    $(this).unbind('click');
+                    if ( evia_post() ) {
+                      $('.slide' + $data).fadeOut(600);
+                      $('[class^="o-form"]').filter('.active').removeClass('active');
+                      $('.o-form__thanks').addClass('active');
+                      $('.o-control').filter('.active').removeClass('active');
+                      $(this).unbind('click');
+                    }
                   }
                 });
               }
@@ -236,6 +241,16 @@ var App = (function (window, $) {
   function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email);
+  }
+
+  function evia_post() {
+    $.post( "/", $( "#quizForm1" ).serialize(), function (data) {
+      console.log(data);
+      return true;
+    }).fail(function (e) {
+      console.log(e);
+      return false;
+    });
   }
   // public API
   return {
