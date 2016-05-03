@@ -128,14 +128,24 @@ var App = (function (window, $) {
     getReady = function () {
       $('.quiz_section').not('.slide1, .slide2').hide();
       $('.comenzar').click(function () {
-        $('.slide1, .slide2').fadeOut(500, function () {
-          $('.slide3').fadeIn('slow');
+        var flag = true, $slids = $('.slide1, .slide2');
+        $slids.find('input').each(function () {
+          if ($(this).val() == '') {
+            flag = false;
+          }
         });
-        $('[class^="o-form"]').filter('.active').removeClass('active');
-        $('.o-form__quest').addClass('active');
-        $('.o-control').filter('.active').removeClass('active');
-        $('.o-control.segundo').addClass('active');
-        $('.nexxt').data('quest',3);
+        if ( flag ){
+          $slids.fadeOut(500, function () {
+            $('.slide3').fadeIn('slow');
+          });
+          $('[class^="o-form"]').filter('.active').removeClass('active');
+          $('.o-form__quest').addClass('active');
+          $('.o-control').filter('.active').removeClass('active');
+          $('.o-control.segundo').addClass('active');
+          $('.nexxt').data('quest',3);
+        } else {
+          console.log('faltan campos');
+        }
       });
       $('.nexxt').click(function () {
         var $this = $(this);
@@ -157,7 +167,7 @@ var App = (function (window, $) {
                     $('[class^="o-form"]').filter('.active').removeClass('active');
                     $('.o-form__thanks').addClass('active');
                     $('.o-control').filter('.active').removeClass('active');
-                    $('.qmn_btn').click();
+                    //$('.qmn_btn').click();
                     $(this).unbind('click');
                   }
                 });
