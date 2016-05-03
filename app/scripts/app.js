@@ -169,12 +169,10 @@ var App = (function (window, $) {
         } else {
           $('.mlwEmail').removeClass('error');
         }
-        /*
         if ( !$('#terms').attr('checked') ) {
-          $('.primero').append('<p>Debes aceptar los terminos de Mundomex</p>')
+          $('.primero').append('<p>Debes aceptar los terminos de Mundomex</p>');
           flag = false;
         }
-        */
 
         if (flag) {
           $slids.fadeOut(500, function () {
