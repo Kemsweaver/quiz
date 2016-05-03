@@ -104,7 +104,7 @@ var App = (function (window, $) {
 
       element.parent().width(windowWidth).height(windowHeight);
 
-      var shift = 0;
+      /*var shift = 0;
       if (windowWidth / windowHeight > aspectRatio) {
         element.width(windowWidth).height('100%');
         // shift the element up
@@ -123,7 +123,7 @@ var App = (function (window, $) {
           shift = 0;
         }
         element.css("left", -shift);
-      }
+      }*/
 
     },
     

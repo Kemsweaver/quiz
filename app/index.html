@@ -67,7 +67,7 @@
                            <img src="images/text.png" alt="" class="img-responsive">
                          </div>
                        </div>
-
+                       
                       <a href="#" class="o-button o-button--cta">
                         <span class="o-button__caret">
                           <span class="o-button__arrow"></span>
@@ -245,10 +245,28 @@
       <footer class="o-footer">
         <div class="container u-vert-center">
           <h1 class="o-brand pull-left"><a href="javascript:void();" class="o-brand__logo">Mundomex</a></h1>
-          <a href="" class="o-footer__terms pull-right">Términos y condiciones</a>
+          <a href="" class="o-footer__terms pull-right" data-toggle="modal" data-target="#myModal">Términos y condiciones</a>
         </div>
       </footer>
     </div>
+    
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
     
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
@@ -269,19 +287,10 @@
     <!-- endbower -->
     <!-- endbuild -->
     
-    <!-- build:js scripts/plugins.js
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+    <!-- build:js scripts/plugins.js -->
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>-->
+    
     <!-- endbuild -->
     
     <!-- build:js scripts/main.js -->

@@ -169,6 +169,11 @@ strong {
       text-decoration: none;
       color: $c-yellow-base;
     } 
+    &:focus {
+      outline: none;
+      color: $c-yellow-base;      
+      text-decoration: none;
+    }
   }
 }
 
