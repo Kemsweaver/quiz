@@ -139,13 +139,7 @@ var App = (function (window, $) {
         responsiveFallback: 600,
         loop: false,
         updateURL: true,
-        keyboard: false,
-        beforeMove: function (index) {
-
-        },
-        afterMove: function (index) {
-
-        }
+        keyboard: false
       });
     },
 
