@@ -27,18 +27,10 @@ body {
    @include coverer;
    z-index: 30;
    background-color: #fff;
-   .container {
+   .container-fluid {
      position: relative;
      height: 100vh;
    }
-  }
-  
-  &__circle {
-    width: 500px;
-    height: 500px;
-    float: left;
-    border-radius: 50%;
-    background-color: #000;
   } 
 }
 

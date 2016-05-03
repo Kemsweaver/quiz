@@ -15,6 +15,10 @@ var App = (function (window, $) {
     main = $('main.o-pages'),
 
     root = $('#root'),
+    
+    btnDown = $('a.o-button--cta'),
+    
+    mask = $('.o-mask'),
 
     container = root.find('.o-artwork__container'),
     
@@ -56,6 +60,13 @@ var App = (function (window, $) {
         }, 100);
 
       });
+      
+      btnDown.click(function (evt) {
+        evt.preventDefault();
+        main.moveTo(2);
+      });
+      
+      
       updateLayout();
       
       $('body').on(Modernizr.touch ? 'touchmove': 'mousemove', function (e) {
@@ -121,7 +132,13 @@ var App = (function (window, $) {
         sectionContainer: "section.o-page",
         responsiveFallback: 600,
         loop: false,
-        keyboard: false
+        keyboard: false,
+        beforeMove : function (index) {
+          
+        },
+        afterMove : function (index) {
+         
+        }
       });
     },
 
