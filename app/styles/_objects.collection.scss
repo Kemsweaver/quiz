@@ -88,21 +88,18 @@ strong {
 
 .onepage-pagination {
    li {
-    a {
-      transition: all 100ms ease-in;
-      
-      &.active {
-        &:hover {
-          &:before {
-            border-color: #fff;
-            background-color: transparent;
-          } 
-          }
-      }
-      
-        
-        
-      
+     margin-bottom: 4px;
+      a {
+        display: block;
+        transition: all 100ms ease-in;
+        padding: 0;
+        width: 8px;
+        height: 24px;
+        background-color: black;
+        opacity: 0.5;
+        &.active {
+          opacity: 1;
+        }
     } 
   }
 } 
