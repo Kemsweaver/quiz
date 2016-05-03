@@ -150,8 +150,11 @@ var App = (function (window, $) {
     },
 
     getReady = function () {
+      $('.descubre').click(function () {
+        $('.onepage-pagination li:nth-child(2) a').click();
+      });
       $('.registro').click(function () {
-        
+        $('.onepage-pagination li:nth-child(3) a').click();
       });
       $('.quiz_section').not('.slide1, .slide2').hide();
       $('.comenzar').click(function () {
