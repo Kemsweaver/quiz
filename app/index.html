@@ -120,7 +120,7 @@
                       <span class="o-button__fb-short"></span>
                     </span>
 
-                    <span class="o-button__label">Entrar con Facebook</span>
+                    <span class="o-button__label" id="facebook_login">Entrar con Facebook</span>
                   </a>
                 </div>
 
@@ -144,6 +144,7 @@
                   <div class="o-form__thanks o-base">
                     <h3 class="o-base__title"><small>5.</small>Gracias</h3>
                     <span class="o-fly o-fly--left"></span>
+                    <p class="o-base__text">Nos estaremos comunicando contigo</p>
                   </div>
                 </div>
               </div>
@@ -156,7 +157,7 @@
                     }
                   </script>
                   <div class="qmn_quiz_container mlw_qmn_quiz">
-                    <form name="quizForm1" id="quizForm1" action="" method="post" class="qmn_quiz_form mlw_quiz_form" novalidate="">
+                    <form name="quizForm1" id="quizForm1" action="" method="post" class=" mlw_quiz_form" novalidate="">
                       <div name="mlw_error_message" id="mlw_error_message" class="qmn_error_message_section"></div>
                       <span id="mlw_top_of_quiz"></span>
                       <div class="quiz_section  quiz_begin slide1">
@@ -215,7 +216,7 @@
                 </div>
               </div>
               <div class="col-xs12 col-md-6">
-                <div class="controls primero active">
+                <div class="o-control primero active">
                   <div class="checkbox">
                     <input type="checkbox" value="1" class="" id="terms">
                     <label for="terms">Deseo que Mundomex me haga llegar por correo electrónico y/o por SMS promociones de Futbol.</label>
@@ -224,8 +225,15 @@
                     <button type="button" class="comenzar">Comenzar</button>
                   </div>
                 </div>
-                <div class="controls segundo">
-                  <button type="button" class="nexxt">Siguiente</button>
+                <div class="o-control segundo">
+                  <div class="button">
+                    <button type="button" class="nexxt">Siguiente</button>
+                  </div>
+                </div>
+                <div class="o-control final">
+                  <div class="button">
+                    <button type="button" class="finalBtn">Terminar</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -280,5 +288,41 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
+    <script>
+      //var userData = false;
+      var userData = {"id":"10154051892802018","email":"dm_le_post@hotmail.com","first_name":"Ricardo","last_name":"Máximo"};
+      function FacebookAuth( success ){
+        if(userData) {
+          success(userData);
+        } else {
+          FB.login(function (response) {
+            if (response.authResponse) {
+              FB.api('/me/?fields=id,email,first_name,last_name', function(response) {
+                if (response && !response.error) {
+                  success(response);
+                }
+                else{
+                  console.log(response.error);
+                }
+              });
+            } else {
+              console.log("You must accept the application permissions.");
+            }
+          }, {scope:'email,public_profile'});
+        }
+      }
+      $('#facebook_login').on('click', function (event) {
+        event.preventDefault();
+        FacebookAuth(function( data ){
+            $('input[name = "mlwUserName"]').val( data.first_name+"_"+data.last_name );
+            $('input[name = "mlwUserEmail"]').val( data.email );
+            console.log( data.id );
+        })
+          .fail(function(e){
+            console.log(e);
+            return;
+          });
+        });
+    </script>
   </body>
 </html>
