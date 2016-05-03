@@ -126,14 +126,50 @@ var App = (function (window, $) {
     },
 
     getReady = function () {
-      var $finputs = $('.quiz_section').not('.slide1, .slide2').hide();
+      $('.quiz_section').not('.slide1, .slide2').hide();
       $('.comenzar').click(function () {
-        $finputs.fadeOut(500, 'ease', function () {
+        $('.slide1, .slide2').fadeOut(500, function () {
           $('.slide3').fadeIn('slow');
         });
         $('[class^="o-form"]').filter('.active').removeClass('active');
         $('.o-form__quest').addClass('active');
+        $('.o-control').filter('.active').removeClass('active');
+        $('.o-control.segundo').addClass('active');
+        $('.nexxt').data('quest',3);
       });
+      $('.nexxt').click(function () {
+        var $this = $(this);
+        var $data = $this.data('quest');
+        console.log($data);
+        if ($('.slide' + $data).find('textarea').val() == '') {
+          console.log('vacio');
+        } else {
+          if ($data <= 5) {
+            $('.slide' + $data).fadeOut(600, function () {
+              if ($data == 5) {
+                $('.o-control').filter('.active').removeClass('active');
+                $('.o-control.final').addClass('active');
+                $('.finalBtn').click(function () {
+                  if ($('.slide' + $data).find('textarea').val() == '') {
+                    console.log('vacio');
+                  } else {
+                    $('.slide' + $data).fadeOut(600);
+                    $('[class^="o-form"]').filter('.active').removeClass('active');
+                    $('.o-form__thanks').addClass('active');
+                    $('.o-control').filter('.active').removeClass('active');
+                    $('.qmn_btn').click();
+                    $(this).unbind('click');
+                  }
+                });
+              }
+              $data = $data + 1;
+              $('.slide' + $data).fadeIn('slow');
+              $this.data( 'quest', $data );
+            });
+          } 
+        }
+
+      })
     },
 
       loadForms = function () {

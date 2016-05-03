@@ -79,7 +79,8 @@ body {
       font-size: 17px;
       color: black;
     }
-    input {
+    input,
+    textarea {
       border: 2px solid black;
       border-radius: 0;
       background: transparent;
@@ -104,8 +105,9 @@ div[class^="o-form"] {
   }
 }
 
-.controls {
+.o-control {
   text-align: center;
+  &.final,
   &.segundo,
   &.primero {
     display: none;
@@ -196,4 +198,14 @@ div[class^="o-form"] {
       }
     }
   }
+}
+
+.mlw_quiz_form {
+  br {
+    display: none;
+  }
+}
+
+.qmn_results_page {
+  display: none;
 }
