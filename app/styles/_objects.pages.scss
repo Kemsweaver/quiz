@@ -115,6 +115,7 @@ div[class^="o-form"] {
     display: none;
     opacity: 0;
     transition: 400ms opacity ease-in;
+    margin-top: 40px;
     &.active {
       display: block;
       opacity: 1;

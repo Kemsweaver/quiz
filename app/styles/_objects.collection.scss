@@ -23,18 +23,50 @@ strong {
 } 
 
 .o-base,
-.o-f{
+.o-f {
   &__title {
     font-family: 'Acronym-ExtraBold';
     font-size: 40px;
     color: black;
     > small {
       font-size: 24px;
-      color: black;
-      padding-right: 0.5em;
+      color: #FFF100;
+      padding: 5px 2px 2px;
+      background: black;
+      position: relative;
+      margin-right: 30px;
+      &:before {
+        content: ' ';
+        position: absolute;
+        height: 100%;
+        width: 10px;
+        top: 0;
+        left: -18px;
+        border-left: 18px solid transparent;
+        border-bottom: 31px solid black;
+        border-top: none;
+        border-right: 0px solid transparent;
+      }
+      &:after {
+        content: ' ';
+        position: absolute;
+        height: 100%;
+        width: 10px;
+        top: 0;
+        right: -18px;
+        border-right: 18px solid transparent;
+        border-top: 31px solid black;
+        border-bottom: none;
+        border-left: 0 solid transparent;
+      }
     }
   }
-  
+
+  &__text {
+    margin-top: 70px;
+    color: black;
+    text-align: left;
+  }
   ul, p {
     font-family: 'Acronym-Light';
     font-size: 16px;
