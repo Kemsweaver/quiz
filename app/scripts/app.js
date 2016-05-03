@@ -150,6 +150,9 @@ var App = (function (window, $) {
     },
 
     getReady = function () {
+      $('.registro').click(function () {
+        
+      });
       $('.quiz_section').not('.slide1, .slide2').hide();
       $('.comenzar').click(function () {
         var flag = true, $slids = $('.slide1, .slide2');
