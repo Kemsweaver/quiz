@@ -70,6 +70,7 @@ body {
       width: 100%;
       font-size: 17px;
       color: black;
+      margin-top: 20px;
     }
     input,
     textarea {
@@ -79,7 +80,7 @@ body {
       padding: 8px 10px;
       margin: 10px 0 1px;
       width: 100%;
-      box-shadow: 10px 10px black;
+      box-shadow: 5px 5px black;
       &:focus {
         outline: none;
       }
@@ -205,6 +206,7 @@ div[class^="o-form"] {
         border-top: 35px solid #F0E000;
         border-bottom: none;
         border-left: 10px solid #F0E000;
+        z-index: 3;
       }
       &:before{
         content: ' ';
@@ -217,6 +219,37 @@ div[class^="o-form"] {
         border-top: 40px solid black;
         border-bottom: none;
         border-right: 10px solid transparent;
+        z-index: 2;
+      }
+      i {
+        position: absolute;
+        overflow: visible;
+        background: transparent;
+        width: 100%;
+        height: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        &:after {
+          content: ' ';
+          position: absolute;
+          background: black;
+          left: -5px;
+          bottom: -7px;
+          width: 10px;
+          height: 5px;
+        }
+        &:before {
+          content: ' ';
+          position: absolute;
+          right: -15px;
+          bottom: -16px;
+          width: 0;
+          height: 0;
+          border: 10px solid transparent;
+          border-top: 37px solid black;
+          z-index: 1;
+        }
       }
       span {
         position: absolute;
@@ -226,7 +259,8 @@ div[class^="o-form"] {
         height: 0;
         top: 0;
         left: 0;
-        &:after{
+        z-index: 2;
+        &:after {
           content: ' ';
           position: absolute;
           height: 100%;
@@ -238,7 +272,7 @@ div[class^="o-form"] {
           border-top: none;
           border-right: 10px solid #F0E000;
         }
-        &:before{
+        &:before {
           content: ' ';
           position: absolute;
           height: 100%;
