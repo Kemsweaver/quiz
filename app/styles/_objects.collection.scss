@@ -85,8 +85,8 @@ strong {
   }
   
   &__headline {
-    font-size: 64px;
-    line-height: 64px;
+    font-size: 80px;
+    line-height: 80px;
   }
   &__accent {
     font-size: 32px;
@@ -177,5 +177,20 @@ strong {
     height: 48px;
     background: url('../images/mundomex-logo.svg') no-repeat center center;
     @include hide-text;
+  }
+} 
+
+
+.o-p-brand {
+  display: block;
+  width: 200px;
+  margin: 0.35em 0 0 0;
+  &__logo {
+    display: block;
+    width: 160px;
+    height: 40px;
+    @include hide-text;
+    background: url('../images/referee-logo.svg') no-repeat;
+    background-size: contain;
   }
 } 
