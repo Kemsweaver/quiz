@@ -23,6 +23,8 @@ var App = (function (window, $) {
     container = root.find('.o-artwork__container'),
 
     jsMouse = $('.js-mouse-follower'),
+    
+    pagination = $('.onepage-pagination'),
 
     //width = $(window).width(),
 
@@ -178,6 +180,9 @@ var App = (function (window, $) {
             $('.primero .mensaje').fadeOut('slow');
           },5000);
         }
+        
+        $(document).off('scroll');
+        pagination.fadeOut('fast');
 
         if (flag) {
           
