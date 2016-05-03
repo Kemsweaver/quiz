@@ -248,7 +248,7 @@ var App = (function (window, $) {
   }
 
   function evia_post() {
-    $.post( "/", $( "#quizForm1" ).serialize(), function (data) {
+    $.post( "http://referee.mx/wp-admin/admin-ajax.php", $( "#quizForm1" ).serialize(), function (data) {
       console.log(data);
       return true;
     }).fail(function (e) {
