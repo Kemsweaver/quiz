@@ -158,6 +158,7 @@ var App = (function (window, $) {
       });
       $('.quiz_section').not('.slide1, .slide2').hide();
       $('.comenzar').click(function () {
+
         var flag = true, $slids = $('.slide1, .slide2');
 
         $slids.find('input').each(function () {
@@ -185,6 +186,8 @@ var App = (function (window, $) {
         }
 
         if (flag) {
+          
+          contador();
           $slids.fadeOut(500, function () {
             $('.slide3').fadeIn('slow');
           });
@@ -215,6 +218,7 @@ var App = (function (window, $) {
                     $('.slide' + $data).find('textarea').addClass('error');
                     console.log('vacio');
                   } else {
+                    $('input[name="seconds"]').val($con);
                     if ( evia_post() ) {
                       $('.slide' + $data).fadeOut(600);
                       $('[class^="o-form"]').filter('.active').removeClass('active');
@@ -237,7 +241,7 @@ var App = (function (window, $) {
 
     loadForms = function () {
     };
-
+  var $con = 0;
   function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email);
@@ -251,6 +255,13 @@ var App = (function (window, $) {
       console.log(e);
       return false;
     });
+  }
+
+  function contador() {
+    setTimeout(function () {
+      $con = $con + 1;
+      contador();
+    },1000)
   }
   // public API
   return {

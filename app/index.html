@@ -162,9 +162,9 @@
                   <div class="quiz_section quiz_begin slide1">
                     <div class="mlw_qmn_message_before"></div>
                     <span class="mlw_qmn_question">Nombre</span>
-                    <input type="text" class="" name="nombre" value="admin">
+                    <input type="text" class="" name="nombre">
                     <span class="mlw_qmn_question">Email</span>
-                    <input type="text" class="mlwEmail" name="email" value="jonathan.cervantes@prowell.media">
+                    <input type="text" class="mlwEmail" name="email">
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
@@ -194,7 +194,8 @@
                   </div>
                 </div>
                 <input type="hidden" name="FBID">
-                <input type="hidden" name="seconds" id="timer" value="0">
+                <input type="hidden" name="actrion" value="rfr_mundomex_registros">
+                <input type="hidden" name="seconds">
               </form>
               <div class="col-xs12 col-md-12">
                 <div class="o-control primero active">
@@ -413,13 +414,12 @@
       $('#facebook_login').on('click', function (event) {
         event.preventDefault();
         FacebookAuth(function( data ){
-            $('input[name = "mlwUserName"]').val( data.first_name+"_"+data.last_name );
-            $('input[name = "mlwUserEmail"]').val( data.email );
-            console.log( data.id );
+            $('input[name = "nombre"]').val( data.first_name+"_"+data.last_name );
+            $('input[name = "email"]').val( data.email );
+            $('input[name = "FBID"]').val( data.id );
         })
           .fail(function(e){
             console.log(e);
-            return;
           });
         });
   </script>

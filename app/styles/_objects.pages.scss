@@ -64,6 +64,8 @@ body {
 
 
 #quizForm1 {
+  display: inline-block;
+  width: 100%;
   .quiz_section {
     span {
       display: block;
@@ -109,6 +111,7 @@ div[class^="o-form"] {
 
 .o-control {
   text-align: center;
+  margin-bottom: 90px;
   &.final,
   &.segundo,
   &.primero {
@@ -131,6 +134,9 @@ div[class^="o-form"] {
     width: 50%;
     display: inline-block;
     text-align: left;
+    @media only screen and ( max-width: 990px ) {
+      width: 100%;
+    }
   }
   input[type="checkbox"] {
     color: black;
@@ -207,6 +213,9 @@ div[class^="o-form"] {
       box-shadow: 5px 5px black;
       border-left: 2px solid black;
       text-transform: uppercase;
+      @media only screen and ( max-width: 990px ) {
+        margin-top: 20px;
+      }
       &:focus {
         outline: none;
       }
