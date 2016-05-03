@@ -85,7 +85,8 @@ body {
         outline: none;
       }
       &.error {
-        border-color: red;
+        border-color: #FF3434;
+        box-shadow: 5px 5px #FF3434;
       }
     }
   }
