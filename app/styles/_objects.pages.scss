@@ -200,6 +200,7 @@ div[class^="o-form"] {
       position: relative;
       box-shadow: 5px 5px black;
       border-left: 2px solid black;
+      text-transform: uppercase;
       &:focus {
         outline: none;
       }
@@ -210,10 +211,10 @@ div[class^="o-form"] {
         width: 10px;
         top: 0;
         right: -10px;
-        border: 10px solid transparent;
+        border-right: 10px solid transparent;
         border-top: 35px solid #F0E000;
         border-bottom: none;
-        border-left: 10px solid #F0E000;
+        border-left: 0 solid #F0E000;
         z-index: 3;
       }
       &:before{
@@ -222,11 +223,11 @@ div[class^="o-form"] {
         height: 100%;
         width: 10px;
         top: -2px;
-        right: -12px;
-        border: 10px solid transparent;
+        right: -13px;
+        border-left: 0 solid transparent;
         border-top: 40px solid black;
         border-bottom: none;
-        border-right: 10px solid transparent;
+        border-right: 13px solid transparent;
         z-index: 2;
       }
       i {
@@ -256,6 +257,7 @@ div[class^="o-form"] {
           height: 0;
           border: 10px solid transparent;
           border-top: 37px solid black;
+          border-left-width: 0;
           z-index: 1;
         }
       }

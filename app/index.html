@@ -117,7 +117,15 @@
                 </article>
               </div>
             </div>
-
+            <div class="row">
+              <div class="col-xs-12 u-text-center">
+                <div class="o-control registro">
+                  <div class="button">
+                    <button type="button" class="registro"><span></span><i></i>Registrate</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -130,12 +138,12 @@
                   <h3 class="o-base__title"><small>3.</small>Registro</h3>
                   <span class="o-fly o-fly--left"></span>
 
-                  <div class="col-sm-12 u-text-center">
+                  <div class="col-sm-12">
                     <a href="#" class="o-button">
                       <span class="o-button__caret">
                           <span class="o-button__fb-short"></span>
                       </span>
-                      <span class="o-button__label" id="facebook_login">Entrar con Facebook</span>
+                      <span class="o-button__label" id="facebook_login">Inicia con Facebook</span>
                     </a>
                   </div>
 
@@ -415,6 +423,22 @@
             return;
           });
         });
+  </script>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '1610306625893987',
+        xfbml      : true,
+        version    : 'v2.5'
+      });
+    };
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
   </script>
 </body>
 
