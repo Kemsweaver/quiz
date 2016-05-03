@@ -84,7 +84,13 @@ body {
       &:focus {
         outline: none;
       }
+      &.error {
+        border-color: red;
+      }
     }
+  }
+  .qmn_error input {
+    border-color: red;
   }
 }
 
