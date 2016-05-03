@@ -26,7 +26,7 @@
   <!-- endbuild -->
 </head>
 
-<body>
+<body class="page--home">
   <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -162,42 +162,39 @@
                   <div class="quiz_section quiz_begin slide1">
                     <div class="mlw_qmn_message_before"></div>
                     <span class="mlw_qmn_question">Nombre</span>
-                    <input type="text" class="" name="mlwUserName" value="admin">
+                    <input type="text" class="" name="nombre" value="admin">
                     <span class="mlw_qmn_question">Email</span>
-                    <input type="text" class="mlwEmail" name="mlwUserEmail" value="jonathan.cervantes@prowell.media">
+                    <input type="text" class="mlwEmail" name="email" value="jonathan.cervantes@prowell.media">
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
                   <div class="quiz_section slide2">
                     <span class="mlw_qmn_question">Número de Teléfono</span>
-                    <input type="text" class="" name="mlwUserPhone" value="">
+                    <input type="text" class="" name="phone">
                     <span class="mlw_qmn_question">Twitter</span>
-                    <input type="text" class="mlw_answer_open_text mlwRequiredText" name="question5">
+                    <input type="text" class="mlw_answer_open_text mlwRequiredText" name="twitter">
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-8 col-md-offset-2">
                   <div class="quiz_section slide3">
                     <span class="mlw_qmn_question">Pregunta 2</span>
-                    <textarea class="mlw_answer_open_text mlwRequiredText" cols="70" rows="5" name="question2"></textarea>
+                    <textarea class="mlw_answer_open_text mlwRequiredText" cols="70" rows="5" name="q1"></textarea>
                   </div>
                   <div class="quiz_section slide4">
                     <span class="mlw_qmn_question">Pregunta 3 texto corto</span>
-                    <textarea class="mlw_answer_open_text mlwRequiredText" cols="70" rows="5" name="question3"></textarea>
+                    <textarea class="mlw_answer_open_text mlwRequiredText" cols="70" rows="5" name="q2"></textarea>
                   </div>
                   <div class="quiz_section slide5">
                     <span class="mlw_qmn_question">Pregunta 4</span>
-                    <textarea class="mlw_answer_open_text mlwRequiredText" cols="70" rows="5" name="question4"></textarea>
+                    <textarea class="mlw_answer_open_text mlwRequiredText" cols="70" rows="5" name="q3"></textarea>
                   </div>
                   <div class="quiz_section slide6">
                     <span class="mlw_qmn_question">Pregunta 1</span>
-                    <textarea class="mlw_answer_open_text mlwRequiredText" cols="70" rows="5" name="question1"></textarea>
+                    <textarea class="mlw_answer_open_text mlwRequiredText" cols="70" rows="5" name="q4"></textarea>
                   </div>
-                  <input type="hidden" name="qmn_question_list" value="5Q2Q3Q4Q1Q">
                 </div>
-                <input type="hidden" name="total_questions" id="total_questions" value="5">
-                <input type="hidden" name="timer" id="timer" value="0">
-                <input type="hidden" class="qmn_quiz_id" name="qmn_quiz_id" id="qmn_quiz_id" value="1">
-                <input type="hidden" name="complete_quiz" value="confirmation">
+                <input type="hidden" name="FBID">
+                <input type="hidden" name="seconds" id="timer" value="0">
               </form>
               <div class="col-xs12 col-md-12">
                 <div class="o-control primero active">
@@ -212,6 +209,7 @@
                   <div class="button">
                     <button type="button" class="comenzar"><span></span><i></i>Comenzar</button>
                   </div>
+                  <p class="mensaje"></p>
                 </div>
                 <div class="o-control segundo">
                   <div class="button">
