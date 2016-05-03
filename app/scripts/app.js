@@ -146,11 +146,29 @@ var App = (function (window, $) {
       $('.quiz_section').not('.slide1, .slide2').hide();
       $('.comenzar').click(function () {
         var flag = true, $slids = $('.slide1, .slide2');
+
         $slids.find('input').each(function () {
           if ($(this).val() == '') {
+            $(this).addClass('error');
             flag = false;
+          } else {
+            $(this).removeClass('error');
           }
         });
+
+        if ( !isEmail( $('.mlwEmail').val() ) ) {
+          flag = false;
+          $('.mlwEmail').addClass('error');
+        } else {
+          $('.mlwEmail').removeClass('error');
+        }
+        /*
+        if ( !$('#terms').attr('checked') ) {
+          $('.primero').append('<p>Debes aceptar los terminos de Mundomex</p>')
+          flag = false;
+        }
+        */
+
         if ( flag ){
           $slids.fadeOut(500, function () {
             $('.slide3').fadeIn('slow');
@@ -169,6 +187,7 @@ var App = (function (window, $) {
         var $data = $this.data('quest');
         console.log($data);
         if ($('.slide' + $data).find('textarea').val() == '') {
+          $('.slide' + $data).find('textarea').addClass('error');
           console.log('vacio');
         } else {
           if ($data <= 5) {
@@ -178,6 +197,7 @@ var App = (function (window, $) {
                 $('.o-control.final').addClass('active');
                 $('.finalBtn').click(function () {
                   if ($('.slide' + $data).find('textarea').val() == '') {
+                    $('.slide' + $data).find('textarea').addClass('error');
                     console.log('vacio');
                   } else {
                     $('.slide' + $data).fadeOut(600);
@@ -200,9 +220,12 @@ var App = (function (window, $) {
     },
 
       loadForms = function () {
-      }; 
+      };
 
-
+  function isEmail(email) {
+    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(email);
+  }
   // public API
   return {
     init: init,
