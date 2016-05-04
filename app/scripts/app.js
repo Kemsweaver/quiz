@@ -26,10 +26,6 @@ var App = (function (window, $) {
 
     pagination = $('.onepage-pagination'),
 
-    //width = $(window).width(),
-
-    //height = $(window).height(),
-
     init = function () {
       cache();
       bind();
@@ -177,10 +173,6 @@ var App = (function (window, $) {
 
         if (!$('#terms').is(':checked')) {
           flag = false;
-          /* $('.primero .mensaje').fadeIn('fast').html('Debes ');
-          setTimeout(function () {
-            $('.primero .mensaje').fadeOut('slow');
-          }, 5000); */
         }
 
         $(document).off('scroll');
@@ -210,7 +202,10 @@ var App = (function (window, $) {
             }
 
           }, "json").fail(function (e) {
-            console.log(e);
+            $('.primero .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
+            setTimeout(function () {
+              $('.primero .mensaje').fadeOut('slow');
+            }, 15000);
           });
 
 
@@ -253,7 +248,11 @@ var App = (function (window, $) {
                       }
 
                     }, "json").fail(function (e) {
-                      console.log(e);
+
+                      $('.primero .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
+                      setTimeout(function () {
+                        $('.primero .mensaje').fadeOut('slow');
+                      }, 15000);
                     });
                   }
                 });
