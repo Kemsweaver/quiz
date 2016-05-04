@@ -206,7 +206,7 @@ var App = (function (window, $) {
               $('.primero .mensaje').fadeIn('fast').html(data.message);
               setTimeout(function () {
                 $('.primero .mensaje').fadeOut('slow');
-              }, 5000);
+              }, 15000);
             }
 
           }, "json").fail(function (e) {
@@ -218,7 +218,7 @@ var App = (function (window, $) {
           $('.primero .mensaje').fadeIn('fast').html('Debes llenar todos los campos y aceptar los terminos de Mundomex');
           setTimeout(function () {
             $('.primero .mensaje').fadeOut('slow');
-          }, 5000);
+          }, 15000);
         }
       });
       $('.nexxt').click(function () {
@@ -249,7 +249,7 @@ var App = (function (window, $) {
                         $('.final .mensaje').fadeIn('fast').html(data.message);
                         setTimeout(function () {
                           $('.final .mensaje').fadeOut('slow');
-                        }, 5000);
+                        }, 15000);
                       }
 
                     }, "json").fail(function (e) {
