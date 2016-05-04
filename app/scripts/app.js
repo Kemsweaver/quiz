@@ -218,13 +218,16 @@ var App = (function (window, $) {
                     console.log('vacio');
                   } else {
                     $('input[name="seconds"]').val($con);
-                    if ( evia_post() ) {
+                    $.post( "http://referee.mx/wp-admin/admin-ajax.php", $( "#quizForm1" ).serialize(), function (data) {
+                      console.log(data);
                       $('.slide' + $data).fadeOut(600);
                       $('[class^="o-form"]').filter('.active').removeClass('active');
                       $('.o-form__thanks').addClass('active');
                       $('.o-control').filter('.active').removeClass('active');
                       $(this).unbind('click');
-                    }
+                    }).fail(function (e) {
+                      console.log(e);
+                    });
                   }
                 });
               }
@@ -244,16 +247,6 @@ var App = (function (window, $) {
   function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email);
-  }
-
-  function evia_post() {
-    $.post( "http://referee.mx/wp-admin/admin-ajax.php", $( "#quizForm1" ).serialize(), function (data) {
-      console.log(data);
-      return true;
-    }).fail(function (e) {
-      console.log(e);
-      return false;
-    });
   }
 
   function contador() {
