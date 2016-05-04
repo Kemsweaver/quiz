@@ -147,6 +147,7 @@ div[class^="o-form"] {
     width: 50%;
     display: inline-block;
     text-align: left;
+    vertical-align: middle;
     @media only screen and ( max-width: 990px ) {
       width: 100%;
     }
@@ -249,6 +250,7 @@ div[class^="o-form"] {
         border-bottom: none;
         border-left: 0 solid #F0E000;
         z-index: 3;
+        transition: all 0.4s ease;
       }
       &:before{
         content: ' ';
@@ -261,6 +263,7 @@ div[class^="o-form"] {
         border-top: 40px solid black;
         border-bottom: none;
         border-right: 13px solid transparent;
+        transition: all 0.4s ease;
         z-index: 2;
       }
       &:hover {
@@ -289,6 +292,7 @@ div[class^="o-form"] {
         z-index: 1;
         transition: all 0.4s ease;
         &:after {
+          transition: all 0.4s ease;
           content: ' ';
           position: absolute;
           background: black;
@@ -307,6 +311,7 @@ div[class^="o-form"] {
           border: 10px solid transparent;
           border-top: 37px solid black;
           border-left-width: 0;
+          transition: all 0.4s ease;
           z-index: 1;
         }
       }
@@ -331,6 +336,7 @@ div[class^="o-form"] {
           border-bottom: 35px solid #F0E000;
           border-top: none;
           border-right: 0 solid #F0E000;
+          transition: all 0.4s ease;
         }
         &:before {
           content: ' ';
@@ -343,6 +349,7 @@ div[class^="o-form"] {
           border-bottom: 40px solid black;
           border-top: none;
           border-left: 12px solid transparent;
+          transition: all 0.4s ease;
         }
       }
     }
