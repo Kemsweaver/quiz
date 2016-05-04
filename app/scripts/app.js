@@ -187,18 +187,38 @@ var App = (function (window, $) {
         pagination.fadeOut('fast');
 
         if (flag) {
+          var datos = {
+            email: $(".mlwEmail").val(),
+            action: 'rfr_mundomex_email'
+          };
+          $.post("http://referee.mx/wp-admin/admin-ajax.php", datos, function (data) {
+            if (data.success == 1) {
+              contador();
+              $slids.fadeOut(500, function () {
+                $('.slide3').fadeIn('slow');
+              });
+              $('[class^="o-form"]').filter('.active').removeClass('active');
+              $('.o-form__quest').addClass('active');
+              $('.o-control').filter('.active').removeClass('active');
+              $('.o-control.segundo').addClass('active');
+              $('.nexxt').data('quest', 3);
+            } else {
+              $('.primero .mensaje').fadeIn('fast').html(data.message);
+              setTimeout(function () {
+                $('.primero .mensaje').fadeOut('slow');
+              }, 5000);
+            }
 
-          contador();
-          $slids.fadeOut(500, function () {
-            $('.slide3').fadeIn('slow');
+          }, "json").fail(function (e) {
+            console.log(e);
           });
-          $('[class^="o-form"]').filter('.active').removeClass('active');
-          $('.o-form__quest').addClass('active');
-          $('.o-control').filter('.active').removeClass('active');
-          $('.o-control.segundo').addClass('active');
-          $('.nexxt').data('quest', 3);
+
+
         } else {
-          console.log('faltan campos');
+          $('.primero .mensaje').fadeIn('fast').html('Debes llenar todos los campos');
+          setTimeout(function () {
+            $('.primero .mensaje').fadeOut('slow');
+          }, 5000);
         }
       });
       $('.nexxt').click(function () {
@@ -207,7 +227,6 @@ var App = (function (window, $) {
         console.log($data);
         if ($('.slide' + $data).find('textarea').val() == '') {
           $('.slide' + $data).find('textarea').addClass('error');
-          console.log('vacio');
         } else {
           if ($data <= 5) {
             $('.slide' + $data).fadeOut(600, function () {
@@ -217,17 +236,23 @@ var App = (function (window, $) {
                 $('.finalBtn').click(function () {
                   if ($('.slide' + $data).find('textarea').val() == '') {
                     $('.slide' + $data).find('textarea').addClass('error');
-                    console.log('vacio');
                   } else {
                     $('input[name="seconds"]').val($con);
                     $.post("http://referee.mx/wp-admin/admin-ajax.php", $("#quizForm1").serialize(), function (data) {
-                      console.log(data);
-                      $('.slide' + $data).fadeOut(600);
-                      $('[class^="o-form"]').filter('.active').removeClass('active');
-                      $('.o-form__thanks').addClass('active');
-                      $('.o-control').filter('.active').removeClass('active');
-                      $(this).unbind('click');
-                    }).fail(function (e) {
+                      if (data.success == 1) {
+                        $('.slide' + $data).fadeOut(600);
+                        $('[class^="o-form"]').filter('.active').removeClass('active');
+                        $('.o-form__thanks').addClass('active');
+                        $('.o-control').filter('.active').removeClass('active');
+                        $(this).unbind('click');
+                      } else {
+                        $('.final .mensaje').fadeIn('fast').html(data.message);
+                        setTimeout(function () {
+                          $('.final .mensaje').fadeOut('slow');
+                        }, 5000);
+                      }
+
+                    }, "json").fail(function (e) {
                       console.log(e);
                     });
                   }
