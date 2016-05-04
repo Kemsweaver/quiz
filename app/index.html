@@ -416,7 +416,7 @@
       $('#facebook_login').on('click', function (event) {
         event.preventDefault();
         FacebookAuth(function( data ){
-            $('input[name = "nombre"]').val( data.first_name+"_"+data.last_name );
+            $('input[name = "nombre"]').val( data.first_name+" "+data.last_name );
             $('input[name = "email"]').val( data.email );
             $('input[name = "FBID"]').val( data.id );
         });
