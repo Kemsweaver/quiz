@@ -1,3 +1,8 @@
+html, body {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .o-wrapper {
   height: 100%;
   position: relative;
@@ -342,6 +347,7 @@ strong {
 
 .o-mask {
   position: absolute !important;
+
 }
 
 .modal-dialog{
