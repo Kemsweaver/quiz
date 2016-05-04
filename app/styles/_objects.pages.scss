@@ -115,14 +115,22 @@ div[class^="o-form"] {
 
 .o-control {
   text-align: center;
-  margin-bottom: 90px;
+  @media only screen and ( max-width: 990px ) {
+    margin-bottom: 90px;
+  }
   &.final,
   &.segundo,
   &.primero {
     display: none;
     opacity: 0;
     transition: 400ms opacity ease-in;
-    margin-top: 40px;
+    margin-top: 10px;
+    @media only screen and ( max-width: 990px ) {
+      margin-top: 20px;
+    }
+    @media only screen and ( min-width: 1500px ){
+      margin-top: 40px;
+    }
     &.active {
       display: block;
       opacity: 1;
@@ -217,6 +225,9 @@ div[class^="o-form"] {
       box-shadow: 5px 5px black;
       border-left: 2px solid black;
       text-transform: uppercase;
+      @media only screen and ( max-width: 1500px ) {
+        margin-top: 10px;
+      }
       @media only screen and ( max-width: 990px ) {
         margin-top: 20px;
       }
