@@ -88,6 +88,7 @@ body {
       margin: 10px 0 1px;
       width: 100%;
       box-shadow: 5px 5px black;
+      transition: all 0.4s ease;
       &:focus {
         outline: none;
       }
@@ -225,6 +226,8 @@ div[class^="o-form"] {
       box-shadow: 5px 5px black;
       border-left: 2px solid black;
       text-transform: uppercase;
+      transition: all 0.4s ease;
+
       @media only screen and ( max-width: 1500px ) {
         margin-top: 10px;
       }
@@ -284,6 +287,7 @@ div[class^="o-form"] {
         bottom: 0;
         left: 0;
         z-index: 1;
+        transition: all 0.4s ease;
         &:after {
           content: ' ';
           position: absolute;
@@ -315,6 +319,7 @@ div[class^="o-form"] {
         top: 0;
         left: 0;
         z-index: 2;
+        transition: all 0.4s ease;
         &:after {
           content: ' ';
           position: absolute;
