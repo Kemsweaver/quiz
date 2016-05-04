@@ -6,9 +6,10 @@
 .o-header {
   width: 100%;
   z-index: 20;
+  background: $c-yellow-base;
   @include bp(320px,800px) {
     position: absolute !important;
-    background: linear-gradient(to bottom, rgba(255,242,0,1) 0%, rgba(0,0,0,0) 100%);
+    
     
     h1, ul {
       float: none;
@@ -343,10 +344,10 @@ strong {
   position: absolute !important;
 }
 
-.modal {
-  .modal-body {
-    height: 80vh;
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
-  }
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{
+    height: 250px;
+    overflow-y: auto;
 }

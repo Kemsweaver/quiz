@@ -206,6 +206,8 @@ div[class^="o-form"] {
       color: #F0E000;
 
     }
+    
+    
   }
   .button {
     display: block;
@@ -374,3 +376,12 @@ section.o-pages__form {
     }
   }
 }
+
+a.o-link {
+      color: black;
+      text-decoration: underline;
+      &:hover, 
+      &:focus {
+        color: black;
+      }
+    }

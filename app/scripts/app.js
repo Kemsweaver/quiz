@@ -23,7 +23,7 @@ var App = (function (window, $) {
     container = root.find('.o-artwork__container'),
 
     jsMouse = $('.js-mouse-follower'),
-    
+
     pagination = $('.onepage-pagination'),
 
     //width = $(window).width(),
@@ -47,11 +47,11 @@ var App = (function (window, $) {
       }
 
       container.append(element);
-      
-      
+
+
       enableOnePage();
-      
-      
+
+
     },
 
     bind = function () {
@@ -75,9 +75,9 @@ var App = (function (window, $) {
       updateLayout();
 
       $('body').on('touchmove mousemove', function (e) {
-        var currentY = e.originalEvent.touches ?  e.originalEvent.touches[0].pageY : e.pageY;
-        var currentX = e.originalEvent.touches ?  e.originalEvent.touches[0].pageX : e.pageX;
-        
+        var currentY = e.originalEvent.touches ? e.originalEvent.touches[0].pageY : e.pageY;
+        var currentX = e.originalEvent.touches ? e.originalEvent.touches[0].pageX : e.pageX;
+
         var mouseX = currentX - jsMouse.width() / 2,
           mouseY = currentY - jsMouse.height() / 2;
 
@@ -91,6 +91,8 @@ var App = (function (window, $) {
           y: mouseY
         })
       });
+
+      $('.modal-body').perfectScrollbar();
     },
 
 
@@ -173,19 +175,19 @@ var App = (function (window, $) {
           $('.mlwEmail').removeClass('error');
         }
 
-        if ( !$('#terms').is(':checked') ) {
+        if (!$('#terms').is(':checked')) {
           flag = false;
           $('.primero .mensaje').fadeIn('fast').html('Debes aceptar los terminos de Mundomex');
           setTimeout(function () {
             $('.primero .mensaje').fadeOut('slow');
-          },5000);
+          }, 5000);
         }
-        
+
         $(document).off('scroll');
         pagination.fadeOut('fast');
 
         if (flag) {
-          
+
           contador();
           $slids.fadeOut(500, function () {
             $('.slide3').fadeIn('slow');
@@ -218,7 +220,7 @@ var App = (function (window, $) {
                     console.log('vacio');
                   } else {
                     $('input[name="seconds"]').val($con);
-                    $.post( "http://referee.mx/wp-admin/admin-ajax.php", $( "#quizForm1" ).serialize(), function (data) {
+                    $.post("http://referee.mx/wp-admin/admin-ajax.php", $("#quizForm1").serialize(), function (data) {
                       console.log(data);
                       $('.slide' + $data).fadeOut(600);
                       $('[class^="o-form"]').filter('.active').removeClass('active');
@@ -253,7 +255,7 @@ var App = (function (window, $) {
     setTimeout(function () {
       $con = $con + 1;
       contador();
-    },1000)
+    }, 1000)
   }
   // public API
   return {
