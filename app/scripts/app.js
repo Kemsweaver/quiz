@@ -186,6 +186,7 @@ var App = (function (window, $) {
           $.post("http://referee.mx/wp-admin/admin-ajax.php", datos, function (data) {
             if (data.success == 1) {
               contador();
+              $('#btnFacebook').fadeOut('fast');
               $slids.fadeOut(500, function () {
                 $('.slide3').fadeIn('slow');
               });

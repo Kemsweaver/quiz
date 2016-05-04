@@ -137,7 +137,7 @@
                   <span class="o-fly o-fly--left"></span>
                 </div>
                 <div class="col-xs-12 u-text-center">
-                  <a href="#" class="o-button">
+                  <a href="#" class="o-button" id="btnFacebook">
                       <span class="o-button__caret">
                           <span class="o-button__fb-short"></span>
                       </span>
@@ -419,6 +419,7 @@
             $('input[name = "nombre"]').val( data.first_name+" "+data.last_name );
             $('input[name = "email"]').val( data.email );
             $('input[name = "FBID"]').val( data.id );
+            $('#btnFacebook').fadeOut('fast');
         });
       });
   </script>
