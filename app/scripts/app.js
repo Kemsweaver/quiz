@@ -156,7 +156,7 @@ var App = (function (window, $) {
         var flag = true, $slids = $('.slide1, .slide2');
 
         $slids.find('input').each(function () {
-          if ($(this).val() == '' || !$(this).hasClass('noValida')) {
+          if ($(this).val() == '' && !$(this).hasClass('noValida')) {
             $(this).addClass('error');
             flag = false;
           } else {
