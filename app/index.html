@@ -207,19 +207,19 @@
                     <label for="terms">Acepto y leí los <a href="#" class="o-link" data-toggle="modal" data-target="#myModal">terminos y condiciones</a></label>
                   </div>
                   <div class="button">
-                    <button type="button" class="comenzar"><span></span><i></i>Comenzar</button>
+                    <button type="button" class="comenzar" onClick="ga('send', 'event', 'Button', 'Click', 'Iniciar_trivia');"><span></span><i></i>Comenzar</button>
                   </div>
                   <p class="mensaje"></p>
                 </div>
                 <div class="o-control segundo">
                   <div class="button">
-                    <button type="button" class="nexxt"><span></span><i></i>Siguiente</button>
+                    <button type="button" class="nexxt" onClick="ga('send', 'event', 'Button', 'Click', 'Pregunta');"><span></span><i></i>Siguiente</button>
                   </div>
                   <p class="mensaje"></p>
                 </div>
                 <div class="o-control final">
                   <div class="button">
-                    <button type="button" class="finalBtn"><span></span><i></i>Terminar</button>
+                    <button type="button" class="finalBtn" onClick="ga('send', 'event', 'Button', 'Click', 'Trivia_concluida');"><span></span><i></i>Terminar</button>
                   </div>
                   <p class="mensaje"></p>
                 </div>
