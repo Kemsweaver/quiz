@@ -156,7 +156,7 @@ var App = (function (window, $) {
         var flag = true, $slids = $('.slide1, .slide2');
 
         $slids.find('input').each(function () {
-          if ($(this).val() == '') {
+          if ($(this).val() == '' || !$(this).hasClass('noValida')) {
             $(this).addClass('error');
             flag = false;
           } else {
@@ -194,6 +194,7 @@ var App = (function (window, $) {
               $('.o-control').filter('.active').removeClass('active');
               $('.o-control.segundo').addClass('active');
               $('.nexxt').data('quest', 3);
+              ga('send', 'event', 'Button', 'Click', 'registro_exitoso');
             } else {
               $('.primero .mensaje').fadeIn('fast').html(data.message);
               setTimeout(function () {
@@ -239,6 +240,7 @@ var App = (function (window, $) {
                         $('[class^="o-form"]').filter('.active').removeClass('active');
                         $('.o-form__thanks').addClass('active');
                         $('.o-control').filter('.active').removeClass('active');
+                        ga('send', 'event', 'Button', 'Click', 'Trivia_concluida');
                         $(this).unbind('click');
                       } else {
                         $('.final .mensaje').fadeIn('fast').html(data.message);
