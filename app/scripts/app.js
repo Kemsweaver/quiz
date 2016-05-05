@@ -141,10 +141,9 @@ var App = (function (window, $) {
         updateURL: false,
         keyboard: false,
         afterMove: function(index) {
-          var h = $('.o-pages').eq(index-1).attr('id');
-          console.log(h);
+          var h = $('.o-page').eq(index-1).attr('id');
           if(callback_hash) {
-            callback_hash(hash);
+            callback_hash(h);
           }
         }
       });
