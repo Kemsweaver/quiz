@@ -142,10 +142,10 @@ var App = (function (window, $) {
         updateURL: false,
         keyboard: false,
         afterMove: function(index) {
-          var h = $('.o-page').eq(index).attr('id');
-          console.log(index);
+          var h = $('.o-page').eq(index -1).attr('id');
+
           if(callback_hash) {
-            callback_hash(hash);
+            callback_hash(h);
           }
         }
       });
@@ -162,7 +162,11 @@ var App = (function (window, $) {
         
        history.pushState({}, document.title, href);
 
-       main.moveTo(target.index() + 1);
+       //main.moveTo(target.index() + 1);
+       
+       $('html,body').animate({
+          scrollTop: target.offset().top
+        },'fast');
        
        hashCurrent = hash;
      }
