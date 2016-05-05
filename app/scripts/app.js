@@ -159,13 +159,12 @@ var App = (function (window, $) {
        var href = window.location.href.substr(0,window.location.href.indexOf('#')) + '#' + hash,
         sections = $('.o-pages'),
         target = sections.find('#' + hash);
-        
+        console.log(target);
        history.pushState({}, document.title, href);
 
        if (md.mobile()) {
-         $('html,body').animate({
-           scrollTop: target.offset().top
-         },'fast');
+//         $('html,body').animate({ scrollTop: 500},'fast');
+         $('body').scrollTo(target);
         } else {
          main.moveTo(target.index() + 1);
        }
