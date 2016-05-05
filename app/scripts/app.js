@@ -195,7 +195,7 @@ var App = (function (window, $) {
               $('.o-control').filter('.active').removeClass('active');
               $('.o-control.segundo').addClass('active');
               $('.nexxt').data('quest', 3);
-              ga('send', 'event', 'Button', 'Click', 'registro_exitoso');
+              $("body").trigger("button.click",'registro_exitoso');
             } else {
               $('.primero .mensaje').fadeIn('fast').html(data.message);
               setTimeout(function () {
@@ -241,7 +241,7 @@ var App = (function (window, $) {
                         $('[class^="o-form"]').filter('.active').removeClass('active');
                         $('.o-form__thanks').addClass('active');
                         $('.o-control').filter('.active').removeClass('active');
-                        ga('send', 'event', 'Button', 'Click', 'Trivia_concluida');
+                        $("body").trigger("button.click",'Trivia_concluida');
                         $(this).unbind('click');
                       } else {
                         $('.final .mensaje').fadeIn('fast').html(data.message);
