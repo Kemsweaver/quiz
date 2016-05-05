@@ -139,12 +139,21 @@ var App = (function (window, $) {
         responsiveFallback: 600,
         loop: false,
         updateURL: false,
-        keyboard: false
+        keyboard: false,
+        afterMove: function(index) {
+          var h = $('.o-pages').eq(index-1).attr('id');
+          console.log(h);
+          if(callback_hash) {
+            callback_hash(hash);
+          }
+        }
       });
     },
     
-    setHash = function (hash) {
+    setHash = function (hashParam) {
+      var hash = hashParam.replace('#','');
 
+      console.log(hash);
      if(history.replaceState) {
        var href = window.location.href.substr(0,window.location.href.indexOf('#')) + '#' + hash,
         sections = $('.o-pages'),
@@ -157,9 +166,9 @@ var App = (function (window, $) {
        hashCurrent = hash;
      }
     },
-    
+    callback_hash,
     hashChange = function (callback) {
-        callback(hashCurrent);
+      callback_hash = callback;
     },
     
     getReady = function () {
@@ -214,7 +223,7 @@ var App = (function (window, $) {
               $('.o-control').filter('.active').removeClass('active');
               $('.o-control.segundo').addClass('active');
               $('.nexxt').data('quest', 3);
-              $("body").trigger("button.click",'registro_exitoso');
+              window.parent.registro();
             } else {
               $('.primero .mensaje').fadeIn('fast').html(data.message);
               setTimeout(function () {
@@ -260,7 +269,7 @@ var App = (function (window, $) {
                         $('[class^="o-form"]').filter('.active').removeClass('active');
                         $('.o-form__thanks').addClass('active');
                         $('.o-control').filter('.active').removeClass('active');
-                        $("body").trigger("button.click",'Trivia_concluida');
+                        window.parent.termina();
                         $(this).unbind('click');
                       } else {
                         $('.final .mensaje').fadeIn('fast').html(data.message);
