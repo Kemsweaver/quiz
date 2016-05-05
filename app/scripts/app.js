@@ -106,7 +106,7 @@ var App = (function (window, $) {
         'min-height': 0,
         'min-width': 0,
         'position': 'absolute',
-        'height': '100%',
+        'height':'100%'
       });
 
       element.parent().width(windowWidth).height(windowHeight);
