@@ -162,11 +162,13 @@ var App = (function (window, $) {
         
        history.pushState({}, document.title, href);
 
-       //main.moveTo(target.index() + 1);
-       
-       $('html,body').animate({
-          scrollTop: target.offset().top
-        },'fast');
+       if (md.mobile()) {
+         $('html,body').animate({
+           scrollTop: target.offset().top
+         },'fast');
+        } else {
+         main.moveTo(target.index() + 1);
+       }
        
        hashCurrent = hash;
      }
