@@ -106,6 +106,7 @@ var App = (function (window, $) {
         'min-height': 0,
         'min-width': 0,
         'position': 'absolute',
+        'height': '100%',
       });
 
       element.parent().width(windowWidth).height(windowHeight);
@@ -141,8 +142,8 @@ var App = (function (window, $) {
         updateURL: false,
         keyboard: false,
         afterMove: function(index) {
-          var h = $('.o-pages').eq(index-1).attr('id');
-          console.log(h);
+          var h = $('.o-page').eq(index).attr('id');
+          console.log(index);
           if(callback_hash) {
             callback_hash(hash);
           }
