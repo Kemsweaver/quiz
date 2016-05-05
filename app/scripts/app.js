@@ -19,6 +19,8 @@ var App = (function (window, $) {
     btnDown = $('a.o-button--cta'),
 
     mask = $('.o-mask'),
+    
+    hashCurrent,
 
     container = root.find('.o-artwork__container'),
 
@@ -94,8 +96,6 @@ var App = (function (window, $) {
 
     updateLayout = function () {
 
-      console.log('updateLayout');
-
       var windowWidth = $(window).width(),
         windowHeight = $(window).height(),
         aspectRatio = Math.min(windowWidth / element.width(), windowHeight / element.height());
@@ -138,11 +138,30 @@ var App = (function (window, $) {
         sectionContainer: "section.o-page",
         responsiveFallback: 600,
         loop: false,
-        updateURL: true,
+        updateURL: false,
         keyboard: false
       });
     },
+    
+    setHash = function (hash) {
 
+     if(history.replaceState) {
+       var href = window.location.href.substr(0,window.location.href.indexOf('#')) + '#' + hash,
+        sections = $('.o-pages'),
+        target = sections.find('#' + hash);
+        
+       history.pushState({}, document.title, href);
+
+       main.moveTo(target.index() + 1);
+       
+       hashCurrent = hash;
+     }
+    },
+    
+    hashChange = function (callback) {
+        callback(hashCurrent);
+    },
+    
     getReady = function () {
 
       $('.descubre').click(function () { $('.onepage-pagination li:nth-child(2) a').click(); });
@@ -284,7 +303,9 @@ var App = (function (window, $) {
   // public API
   return {
     init: init,
-    loadForms: loadForms
+    loadForms: loadForms,
+    setHash : setHash
   }
 
 })(window, jQuery);
+

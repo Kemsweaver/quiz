@@ -1,6 +1,9 @@
 html, body {
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
+  @include bp(320px, 1024px) {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
 }
 
 .o-wrapper {
