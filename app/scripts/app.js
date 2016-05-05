@@ -304,7 +304,8 @@ var App = (function (window, $) {
   return {
     init: init,
     loadForms: loadForms,
-    setHash : setHash
+    setHash : setHash,
+    hashChange : hashChange,
   }
 
 })(window, jQuery);
