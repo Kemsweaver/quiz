@@ -67,7 +67,7 @@ body {
 }
 
 
-#quizForm1 {
+form {
   display: inline-block;
   width: 100%;
   .quiz_section {
@@ -100,6 +100,11 @@ body {
   }
   .qmn_error input {
     border-color: red;
+  }
+
+  &.slide2,
+  &.preguntas {
+    display: none;
   }
 }
 
@@ -362,15 +367,6 @@ div[class^="o-form"] {
   }
 }
 
-.mlw_quiz_form {
-  br {
-    display: none;
-  }
-}
-
-.qmn_results_page {
-  display: none;
-}
 
 .onepage-pagination li a:before,
 .onepage-pagination li a.active:before {

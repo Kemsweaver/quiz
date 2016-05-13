@@ -155,10 +155,10 @@
                 </div>
               </div>
             </div>
-            <div class="row formulario">
-              <form name="quizForm1" id="quizForm1" action="" method="post" class=" mlw_quiz_form" novalidate="">
+            <div class="row">
+              <form id="datosRegistro" action="" method="post" class="formulario slide1" novalidate="">
                 <div class="col-xs-12 col-md-6">
-                  <div class="quiz_section quiz_begin slide1">
+                  <div class="quiz_section">
                     <div class="mlw_qmn_message_before"></div>
                     <span class="mlw_qmn_question">Nombre</span>
                     <input type="text" class="" name="nombre">
@@ -167,13 +167,19 @@
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
-                  <div class="quiz_section slide2">
+                  <div class="quiz_section">
                     <span class="mlw_qmn_question">Número de teléfono</span>
                     <input type="text" class="noValida" name="phone">
                     <span class="mlw_qmn_question">Twitter</span>
                     <input type="text" class="mlw_answer_open_text mlwRequiredText" name="twitter">
                   </div>
                 </div>
+              </form>
+
+              <form id="quizimage" action="" method="post" class="formulario slide2" novalidate="">
+              </form>
+
+              <form id="quizDatos" action="" method="post" class="formulario preguntas" novalidate="">
                 <div class="col-xs-12 col-md-8 col-md-offset-2">
                   <div class="quiz_section slide3">
                     <span class="mlw_qmn_question">¿Cuál es el mejor lugar obtenido por México en un Mundial, fuera de casa? </span>
@@ -198,10 +204,12 @@
               </form>
               <div class="col-xs12 col-md-12">
                 <div class="o-control primero active">
+                  <!--
                   <div class="checkbox">
                     <input type="checkbox" value="1" class="" id="promo">
                     <label for="promo">Deseo que Mundomex me haga llegar por correo electrónico y/o por SMS promociones de Futbol.</label>
                   </div>
+                  -->
                   <div class="checkbox">
                     <input type="checkbox" value="1" class="" id="terms">
                     <label for="terms">Acepto y leí los <a href="#" class="o-link" data-toggle="modal" data-target="#myModal">terminos y condiciones</a></label>

@@ -199,16 +199,26 @@ var App = (function (window, $) {
     },
     
     getReady = function () {
-
+      
+      $.post('http://pizarra.local/trivia/inicia', function (data) {
+        $('head').append('<meta name="csrf-token" content="' + data.csrf +'">')
+      }, 'json')
+          .success(function () {
+            $.ajaxSetup({
+              headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+            });
+          });
+      
       $('.descubre').click(function () { $('.onepage-pagination li:nth-child(2) a').click(); });
 
       $('.registro').click(function () {
         $('.onepage-pagination li:nth-child(3) a').click();
       });
-      $('.quiz_section').not('.slide1, .slide2').hide();
       $('.comenzar').click(function () {
 
-        var flag = true, $slids = $('.slide1, .slide2');
+        var flag = true, $slids = $('.slide1');
 
         $slids.find('input').each(function () {
           if ($(this).val() == '' && !$(this).hasClass('noValida')) {
@@ -234,10 +244,7 @@ var App = (function (window, $) {
         pagination.fadeOut('fast');
 
         if (flag) {
-          var datos = {
-            email: $(".mlwEmail").val(),
-            action: 'rfr_mundomex_email'
-          };
+          var datos = $('#regis');
           $.post("http://referee.mx/wp-admin/admin-ajax.php", datos, function (data) {
             if (data.success == 1) {
               contador();
