@@ -184,6 +184,20 @@ var App = (function (window, $) {
     
     getReady = function () {
       
+      /*$.post(rutaServ + 'trivia/inicia', function (data) {
+            $('head').append('<meta name="csrf-token" content="' + data.csrf +'">')
+        }, 'json')
+        .success(function () {
+          $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            xhrFields: {
+              withCredentials: true
+            }
+          });
+        });*/
+      
       $('.descubre').click(function () { $('.onepage-pagination li:nth-child(2) a').click(); });
 
       $('.registro').click(function () {
@@ -269,7 +283,7 @@ var App = (function (window, $) {
                     $('.slide' + $data).find('textarea').addClass('error');
                   } else {
                     $('input[name="seconds"]').val($con);
-                    $.post("http://referee.mx/wp-admin/admin-ajax.php", $("#quizForm1").serialize(), function (data) {
+                    $.post(rutaServ + 'trivia/respuesta', $("#quizForm1").serialize(), function (data) {
                       if (data.success == 1) {
                         $('.slide' + $data).fadeOut(600);
                         $('[class^="o-form"]').filter('.active').removeClass('active');
