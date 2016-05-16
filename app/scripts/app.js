@@ -44,7 +44,7 @@ var App = (function (window, $) {
     mask = $('.o-mask'),
     
     hashCurrent,
-      
+
     rutaServ = 'http://pizarra.app/',
     //rutaServ = 'http://pizarra.debbie.com.mx/',
 
@@ -216,16 +216,10 @@ var App = (function (window, $) {
           }
         });
 
-        if (!isEmail($('.mlwEmail').val())) {
+        var $cor = notEmail($('.mlwEmail').val());
+        $('.mlwEmail').toggleClass('error', $cor);
+        if (!$('#terms').is(':checked') || $cor)
           flag = false;
-          $('.mlwEmail').addClass('error');
-        } else {
-          $('.mlwEmail').removeClass('error');
-        }
-
-        if (!$('#terms').is(':checked')) {
-          flag = false;
-        }
 
         $(document).off('scroll');
         pagination.fadeOut('fast');
@@ -245,7 +239,8 @@ var App = (function (window, $) {
               $('.nexxt').data('quest', 3);
               window.parent.registro();
             } else {
-              $('.primero .mensaje').fadeIn('fast').html(data.message);
+              $('.primero .mensaje').fadeIn('fast').html(data.mensage);
+              $('.mlwEmail').toggleClass('error', data.status == 2);
               setTimeout(function () {
                 $('.primero .mensaje').fadeOut('slow');
               }, 15000);
@@ -321,9 +316,9 @@ var App = (function (window, $) {
     loadForms = function () {
     };
   var $con = 0;
-  function isEmail(email) {
+  function notEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    return regex.test(email);
+    return !regex.test(email);
   }
 
   // public API
@@ -331,7 +326,7 @@ var App = (function (window, $) {
     init: init,
     loadForms: loadForms,
     setHash : setHash,
-    hashChange : hashChange,
+    hashChange : hashChange
   }
 
 })(window, jQuery);
