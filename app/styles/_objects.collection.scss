@@ -56,6 +56,15 @@ strong {
 
 .o-base,
 .o-f {
+  &.o-premio{
+    p {
+      margin-top: 56px;
+    }
+  }
+  &__subtitle {
+    color: #000;
+    font-size: 19px;
+  }
   &__title {
     font-family: 'Acronym-ExtraBold';
     font-size: 40px;
@@ -237,7 +246,7 @@ strong {
   }
   &__label {
     font-size: 12px;
-    line-height: 23px;
+    line-height: 22px;
     padding-right: 2em;
     padding-left: 2em;
     text-transform: uppercase;
