@@ -154,6 +154,17 @@ strong {
 .o-front {
   @include coverer;
   z-index: 50;
+  h1 {
+    color: #FFF100;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 5px black;
+  }
+  h2 {
+    color: #FFFFFF;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px black;
+  }
 }
 
 
@@ -362,4 +373,12 @@ strong {
 .modal-body{
     height: 250px;
     overflow-y: auto;
+}
+
+.o-artwork {
+  &__container {
+    img {
+      width: 100%;
+    }
+  }
 }

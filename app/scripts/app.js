@@ -27,9 +27,11 @@ var App = (function (window, $) {
 
     md = new MobileDetect(window.navigator.userAgent),
 
-    elementType = md.mobile() ? '<img>' : '<video>',
+    //elementType = md.mobile() ? '<img>' : '<video>',
+    //elementSrc = md.mobile() ? 'images/unnamed.jpg' : 'media/teaser.mp4',
 
-    elementSrc = md.mobile() ? 'images/cover.jpg' : 'media/teaser.mp4',
+    elementType = '<img>',
+    elementSrc = 'images/unnamed.jpg',
 
     element = $(elementType, {}),
 
@@ -42,6 +44,9 @@ var App = (function (window, $) {
     mask = $('.o-mask'),
     
     hashCurrent,
+      
+    rutaServ = 'http://pizarra.app/',
+    //rutaServ = 'http://pizarra.debbie.com.mx/',
 
     container = root.find('.o-artwork__container'),
 
@@ -132,27 +137,6 @@ var App = (function (window, $) {
 
       element.parent().width(windowWidth).height(windowHeight);
 
-      /*var shift = 0;
-      if (windowWidth / windowHeight > aspectRatio) {
-        element.width(windowWidth).height('100%');
-        // shift the element up
-        var height = element.height();
-        shift = (height - windowHeight) / 2;
-        if (shift < 0) {
-          shift = 0;
-        }
-        element.css("top", -shift);
-      } else {
-        element.width('100%').height(windowHeight);
-        // shift the element left
-        var width = element.width();
-        shift = (width - windowWidth) / 2;
-        if (shift < 0) {
-          shift = 0;
-        }
-        element.css("left", -shift);
-      }*/
-
     },
 
     enableOnePage = function () {
@@ -200,17 +184,6 @@ var App = (function (window, $) {
     
     getReady = function () {
       
-      $.post('http://pizarra.local/trivia/inicia', function (data) {
-        $('head').append('<meta name="csrf-token" content="' + data.csrf +'">')
-      }, 'json')
-          .success(function () {
-            $.ajaxSetup({
-              headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-              }
-            });
-          });
-      
       $('.descubre').click(function () { $('.onepage-pagination li:nth-child(2) a').click(); });
 
       $('.registro').click(function () {
@@ -244,13 +217,12 @@ var App = (function (window, $) {
         pagination.fadeOut('fast');
 
         if (flag) {
-          var datos = $('#regis');
-          $.post("http://referee.mx/wp-admin/admin-ajax.php", datos, function (data) {
-            if (data.success == 1) {
-              contador();
+          var datos = $('#datosRegistro').serialize();
+          $.post(rutaServ + 'trivia/registro', datos, function (data) {
+            if (data.status == 1) {
               $('#btnFacebook').fadeOut('fast');
               $slids.fadeOut(500, function () {
-                $('.slide3').fadeIn('slow');
+                $('.slide2').fadeIn('slow');
               });
               $('[class^="o-form"]').filter('.active').removeClass('active');
               $('.o-form__quest').addClass('active');
@@ -340,12 +312,6 @@ var App = (function (window, $) {
     return regex.test(email);
   }
 
-  function contador() {
-    setTimeout(function () {
-      $con = $con + 1;
-      contador();
-    }, 1000)
-  }
   // public API
   return {
     init: init,
