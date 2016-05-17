@@ -136,12 +136,10 @@ strong {
 
 .o-copy {
   text-align: left;
-  width: 100%;
   display: inline-block;
-  max-width: 730px;
-  margin-left: auto;
-  margin-right: auto;
   padding-top: 5em;
+  margin-bottom: 100px;
+  position: relative;
   .o-button {
     margin-top: 0.75em;
   }
@@ -150,6 +148,7 @@ strong {
     font-weight: bold;
     text-transform: uppercase;
     font-size: 30px;
+    margin-bottom: 70px;
     @media only screen and ( max-width: 550px) {
       font-size: 19px;
     }
@@ -162,6 +161,7 @@ strong {
     background-color: $c-yellow-base;
     color: black;
     font-weight: bold;
+    bottom: -10%;
     @media only screen and ( max-width: 550px) {
       font-size: 17px;
     }
