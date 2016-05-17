@@ -57,11 +57,6 @@ strong {
 
 .o-base,
 .o-f {
-  &.o-premio{
-    p {
-      margin-top: 56px;
-    }
-  }
   &__title {
     color: $c-yellow-base;
     font-family: 'Acronym-ExtraBold';
@@ -76,7 +71,7 @@ strong {
     font-size: 19px;
   }
   &__expli {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
   }
   ul,
   li,
@@ -104,6 +99,9 @@ strong {
     @include bp(320px, 900px) {
       font-size: 70px;
     }
+  }
+  .o-premio {
+    margin-top: 50px;
   }
 } 
 
