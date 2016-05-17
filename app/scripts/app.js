@@ -164,9 +164,7 @@ var App = (function (window, $) {
 
        //main.moveTo(target.index() + 1);
        
-       $('html,body').animate({
-          scrollTop: target.offset().top
-        },'fast');
+       $('body').scrollTo(target);
        
        hashCurrent = hash;
      }
