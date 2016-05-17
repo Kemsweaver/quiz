@@ -64,6 +64,9 @@ form {
   width: 100%;
   min-height: 190px;
   .quiz_section {
+    h4 {
+      color: white;
+    }
     span {
       display: block;
       font-family: 'Acronym-ExtraBold';
@@ -260,6 +263,11 @@ div[class^="o-form"] {
       }
     }
   }
+  &.segundo {
+    button {
+      margin-top: 0;
+    }
+  }
 }
 
 $base-line-height: 20px;
@@ -371,4 +379,8 @@ $pulse-duration: 750ms;
         }
      }
   }
-} 
+}
+
+#registro {
+  min-height: 600px;
+}
