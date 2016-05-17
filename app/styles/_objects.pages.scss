@@ -152,17 +152,25 @@ div[class^="o-form"] {
     }
   }
   .checkbox {
-  padding-left: 20px;
+    padding-left: 20px;
     display: inline-block;
     text-align: left;
     vertical-align: middle;
-    color: #000;
+    color: #F0E000;
     @media only screen and ( max-width: 990px ) {
       width: 100%;
     }
+    a.o-link {
+      color: #F0E000;
+      text-decoration: none;
+      &:hover,
+      &:focus {
+        color: #F0E000;
+      }
+    }
   }
   input[type="checkbox"] {
-    color: black;
+    color: white;
     box-sizing: border-box;
     padding: 0;
     margin: 4px 0 0 -20px;
@@ -182,14 +190,14 @@ div[class^="o-form"] {
         content: "";
         display: inline-block;
         position: absolute;
-        width: 17px;
-        height: 17px;
-        left: 0;
-        top: 3px;
+        width: 25px;
+        height: 25px;
+        left: -4px;
+        top: -1px;
         margin-left: -20px;
-        border: 2px solid black;
-        border-radius: 0;
-        background-color: #F0E000;
+        border-radius: 50px;
+        border: 2px solid #F0E000;
+        background-color: black;
         transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
       }
       &:after {
@@ -208,7 +216,6 @@ div[class^="o-form"] {
     }
     &:checked + label::before {
       background-color: black;
-      border-color: black;
     }
     &:checked + label::after {
       font-family: 'FontAwesome';
@@ -270,15 +277,6 @@ section.o-pages__form {
       top: inherit;
       
     }
-  }
-}
-
-a.o-link {
-  color: black;
-  text-decoration: underline;
-  &:hover,
-  &:focus {
-    color: black;
   }
 }
 
