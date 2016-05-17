@@ -67,21 +67,10 @@ strong {
     font-size: 19px;
   }
   &__title {
+    color: $c-yellow-base;
     font-family: 'Acronym-ExtraBold';
-    font-size: 40px;
-    color: black;
+    font-size: 80px;
     margin: 0 0 10px;
-    > small {
-      font-size: 18px;
-      color: #FFF100;
-      padding: 5px 2px 2px;
-      background: black;
-      position: relative;
-      margin-right: 30px;
-      @media only screen and (max-width: 700px) {
-        font-size: 24px;
-      }
-    }
     @include bp(320px, 700px) {
       padding-left: 20px;
     }
@@ -351,9 +340,7 @@ strong {
     background: url('../images/mundomex-logo.svg') no-repeat center center;
     @include hide-text;
   }
-} 
-
-
+}
 .o-p-brand {
   display: block;
   width: 160px;
@@ -366,30 +353,11 @@ strong {
     background: url('../images/referee-logo.svg') no-repeat;
     background-size: contain;
   }
-} 
-
-.o-mask {
-  position: absolute !important;
-  padding-left: 29px;
 }
-
 .modal-dialog{
     overflow-y: initial !important
 }
 .modal-body{
     height: 250px;
     overflow-y: auto;
-}
-
-.o-artwork {
-  &__container {
-    img {
-      width: 100%;
-    }
-  }
-}
-/** parches one-page **/
-
-.disabled-onepage-scroll .onepage-wrapper .section {
-  height: initial;
 }
