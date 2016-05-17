@@ -15,6 +15,7 @@ html, body {
   width: 100%;
   z-index: 20;
   background: $c-yellow-base;
+  background: transparent;
   @include bp(320px,800px) {
     position: absolute !important;
     
@@ -80,32 +81,7 @@ strong {
       @media only screen and (max-width: 700px) {
         font-size: 24px;
       }
-      &:before {
-        content: ' ';
-        position: absolute;
-        height: 100%;
-        width: 10px;
-        top: 0;
-        left: -18px;
-        border-left: 18px solid transparent;
-        border-bottom: 31px solid black;
-        border-top: none;
-        border-right: 0px solid transparent;
-      }
-      &:after {
-        content: ' ';
-        position: absolute;
-        height: 100%;
-        width: 10px;
-        top: 0;
-        right: -18px;
-        border-right: 18px solid transparent;
-        border-top: 31px solid black;
-        border-bottom: none;
-        border-left: 0 solid transparent;
-      }
     }
-
     @include bp(320px, 700px) {
       padding-left: 20px;
     }
@@ -159,37 +135,42 @@ strong {
 } 
 
 .o-copy {
-  text-align: center;
+  text-align: left;
   width: 100%;
+  display: inline-block;
   max-width: 730px;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 6em;
+  padding-top: 5em;
   .o-button {
     margin-top: 0.75em;
+  }
+  h1 {
+    color: #FFF100;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 30px;
+    @media only screen and ( max-width: 550px) {
+      font-size: 19px;
+    }
+  }
+  h2 {
+    position: absolute;
+    width: 100%;
+    font-size: 20px;
+    padding: 10px;
+    background-color: $c-yellow-base;
+    color: black;
+    font-weight: bold;
+    @media only screen and ( max-width: 550px) {
+      font-size: 17px;
+    }
   }
 } 
 
 .o-front {
   @include coverer;
   z-index: 50;
-  h1 {
-    color: #FFF100;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-shadow: 1px 1px 5px black;
-    @media only screen and ( max-width: 550px) {
-      font-size: 19px;
-    }
-  }
-  h2 {
-    color: #FFFFFF;
-    font-weight: bold;
-    text-shadow: 1px 1px 5px black;
-    @media only screen and ( max-width: 550px) {
-      font-size: 17px;
-    }
-  }
 }
 
 
@@ -389,7 +370,7 @@ strong {
 
 .o-mask {
   position: absolute !important;
-
+  padding-left: 29px;
 }
 
 .modal-dialog{

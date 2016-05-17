@@ -26,61 +26,25 @@ var App = (function (window, $) {
   var
 
     md = new MobileDetect(window.navigator.userAgent),
-
-    //elementType = md.mobile() ? '<img>' : '<video>',
-    //elementSrc = md.mobile() ? 'images/unnamed.jpg' : 'media/teaser.mp4',
-
-    elementType = '<img>',
-    elementSrc = 'images/unnamed.jpg',
-
-    element = $(elementType, {}),
-
-    main = $('main.o-pages'),
-
-    root = $('#root'),
-
-    btnDown = $('a.o-button--cta'),
-
-    mask = $('.o-mask'),
-    
     hashCurrent,
     quest, 
 
     rutaServ = 'http://pizarra.debbie.com.mx/',
 
-    container = root.find('.o-artwork__container'),
-
-    jsMouse = $('.js-mouse-follower'),
-
-    pagination = $('.onepage-pagination'),
-
     init = function () {
-      cache();
+      //cache();
       bind();
       getReady();
     },
 
     cache = function () {
 
-      element.attr('src', elementSrc);
-
-      if ('autoplay' in element[0]) {
-        element.attr('autoplay', 'autoplay');
-        element.attr('loop', 'loop');
-        element.attr('muted', 'muted');
-      }
-
-      container.append(element);
-
-
-      enableOnePage();
-
-
     },
 
     bind = function () {
 
-      var resizeTimeout;
+      /*var resizeTimeout;
+
       $(window).on('resize', function () {
         clearTimeout(resizeTimeout);
 
@@ -88,33 +52,7 @@ var App = (function (window, $) {
           updateLayout();
         }, 100);
 
-      });
-
-      btnDown.click(function (evt) {
-        evt.preventDefault();
-        main.moveTo(2);
-      });
-
-
-      updateLayout();
-
-      $('body').on('touchmove mousemove', function (e) {
-        var currentY = e.originalEvent.touches ? e.originalEvent.touches[0].pageY : e.pageY;
-        var currentX = e.originalEvent.touches ? e.originalEvent.touches[0].pageX : e.pageX;
-
-        var mouseX = currentX - jsMouse.width() / 2,
-          mouseY = currentY - jsMouse.height() / 2;
-
-        if (!jsMouse.is(':visible')) {
-          jsMouse.show();
-        }
-
-
-        TweenMax.to(jsMouse, .4, {
-          x: mouseX,
-          y: mouseY
-        })
-      });
+      });*/
 
       $('.modal-body').perfectScrollbar();
     },
@@ -122,61 +60,14 @@ var App = (function (window, $) {
 
     updateLayout = function () {
 
-      var windowWidth = $(window).width(),
-        windowHeight = $(window).height(),
-        aspectRatio = Math.min(windowWidth / element.width(), windowHeight / element.height());
 
-      element.css('');
-
-      element.css({
-        'min-height': 0,
-        'min-width': 0,
-        'position': 'absolute',
-        'height':'100%'
-      });
-
-      element.parent().width(windowWidth).height(windowHeight);
-
-    },
-
-    enableOnePage = function () {
-      main.onepage_scroll({
-        sectionContainer: "section.o-page",
-        responsiveFallback: 600,
-        loop: false,
-        updateURL: false,
-        keyboard: false,
-        afterMove: function(index) {
-          var h = $('.o-page').eq(index -1).attr('id');
-
-          if(callback_hash) {
-            callback_hash(h);
-          }
-        }
-      });
     },
     
     setHash = function (hashParam) {
       var hash = hashParam.replace('#','');
-
       console.log(hash);
-     if(history.replaceState) {
-       var href = window.location.href.substr(0,window.location.href.indexOf('#')) + '#' + hash,
-        sections = $('.o-pages'),
-        target = sections.find('#' + hash);
-        console.log(target);
-       history.pushState({}, document.title, href);
-
-       if (md.mobile()) {
-//         $('html,body').animate({ scrollTop: 500},'fast');
-         $('body').scrollTo(target);
-        } else {
-         main.moveTo(target.index() + 1);
-       }
-       
-       hashCurrent = hash;
-     }
     },
+
     callback_hash,
     hashChange = function (callback) {
       callback_hash = callback;
@@ -212,6 +103,7 @@ var App = (function (window, $) {
 
         if (flag) {
           var datos = $('#datosRegistro').serialize();
+          $('.primero button').addClass('cargando');
           
           $.post(rutaServ + 'trivia/registro', datos, function (data) {
 
@@ -230,6 +122,7 @@ var App = (function (window, $) {
                 },'json');
               });
             } else {
+              $('.primero button').removeClass('cargando');
               $('.primero .mensaje').fadeIn('fast').html(data.mensage);
               $('.mlwEmail').toggleClass('error', data.status == 2);
               setTimeout(function () {
@@ -238,6 +131,7 @@ var App = (function (window, $) {
             }
           }, "json").done(function (data) {
           }).fail(function (e) {
+            $('.primero button').removeClass('cargando');
             $('.primero .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
             setTimeout(function () {
               $('.primero .mensaje').fadeOut('slow');
@@ -262,9 +156,7 @@ var App = (function (window, $) {
           form_data.append('puzzle', file_data);
           form_data.append('quest', quest.quest);
 
-          $('[class^="o-form"]').filter('.active').removeClass('active');
-          $('.o-control').filter('.active').removeClass('active');
-          $('.slide2').fadeOut(500);
+          $('.subir button').addClass('cargando');
 
           $.ajax({
             url: rutaServ + 'trivia/imagen',
@@ -276,6 +168,9 @@ var App = (function (window, $) {
             type: 'post',
             success: function (data) {
               if (data.status == 1) {
+                $('[class^="o-form"]').filter('.active').removeClass('active');
+                $('.o-control').filter('.active').removeClass('active');
+                $('.slide2').fadeOut(500);
                 $.post(rutaServ + 'trivia/quiz', quest, function (data) {
                   $('.mlw_qmn_question').html(data.cuest);
                   $('.o-form__quest').addClass('active');
@@ -290,12 +185,19 @@ var App = (function (window, $) {
                     $('.subir .mensaje').fadeOut('slow');
                   }, 15000);
                 });
+              } else {
+                $('.subir button').removeClass('cargando');
+                $('.subir .mensaje').fadeIn('fast').html(data.mensage);
+                setTimeout(function () {
+                  $('.subir .mensaje').fadeOut('slow');
+                }, 15000);
               }
             }
           }).fail(function (e) {
-            $('.segundo .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
+            $('.subir button').removeClass('cargando');
+            $('.subir .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
             setTimeout(function () {
-              $('.segundo .mensaje').fadeOut('slow');
+              $('.subir .mensaje').fadeOut('slow');
             }, 15000);
           });
         }
