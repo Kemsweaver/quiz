@@ -148,7 +148,6 @@ var App = (function (window, $) {
           flag = false;
 
         $(document).off('scroll');
-        pagination.fadeOut('fast');
 
         if (flag) {
           var datos = $('#datosRegistro').serialize();
