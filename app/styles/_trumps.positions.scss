@@ -13,6 +13,12 @@
 .u-vert-center {
   @include vert-centerer;
   z-index: 20;
+  &.no-translate{
+    @include bp(320px, 700px){
+      transform: none;
+      top: 0;
+    }
+  }
 } 
 
 .u-text-center {

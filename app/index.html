@@ -68,7 +68,7 @@
             <div class="container">
               <div class="o-copy">
                 <div class="row">
-                  <div class="col-md-10 col-md-offset-1 col-xs-8 col-xs-offset-2">
+                  <div class="col-md-10 col-md-offset-1 col-xs-12">
                     <h1>Con MundoMex y Referee, <br>
                       Ya estás en la Copa América</h1>
                     <h2>Ya puedes participar para ganarte un viaje a la Copa América Centenario</h2>
@@ -87,7 +87,7 @@
       </section>
 
       <section class="o-page o-pages__base" id="mecanica">
-        <div class="u-vert-center">
+        <div class="u-vert-center no-translate">
           <div class="u-relative container">
             <div class="row">
               <article class="col-md-6">
@@ -95,7 +95,7 @@
                   <h3 class="o-base__title"><small>1.</small>Dinámica</h3>
                   <h4 class="o-base__subtitle">¿CÓMO TE VAS A LA COPA AMÉRICA CENTENARIO CON MUNDO MEX SPORT Y REFEREE?</h4>
                   <ul>
-                    <li>Sigue a <strong>Mundo Mex Sports</strong> y a <strong>REFEREE</strong> en twitter y Facebook</li>
+                    <li>Sigue a <strong>Mundo Mex Sports</strong> y a <strong>REFEREE</strong> en Twitter y Facebook</li>
                     <li>Encuentra en nuestras publicaciones las piezas del rompecabezas</li>
                     <li>Completa tu registro</li>
                     <li>Sube aquí la foto del rompecabezas armando correctamente</li>
@@ -185,9 +185,13 @@
               </form>
 
               <form id="quizimage" action="" method="post" class="slide2" novalidate="">
-                <h4>Selecciona el archivo a subir</h4>
-                <input id="puzzle" class="archivo" type="file" name="puzzle" />
-                <p>Archivo para subir</p>
+                <div class="col-xs-12 col-md-6 col-md-offset-3">
+                  <div class="u-text-center quiz_section">
+                    <h4>Selecciona el rompecabezas</h4>
+                    <input id="puzzle" class="archivo" type="file" name="puzzle" accept="image/*" />
+                    <p>Tu archivo debe ser una imagen</p>
+                  </div>
+                </div>
               </form>
 
               <!-- Preguntas -->
