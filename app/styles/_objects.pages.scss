@@ -3,9 +3,6 @@ body {
   height: 100%;
 }
 
-body {
-  background: $c-yellow-base;
-} 
 .o-pages {
   background-color: black;
   &__home {
@@ -447,3 +444,32 @@ $pulse-duration: 750ms;
     animation-delay: ($pulse-duration / 1.5);
   }
 }
+
+
+
+.o-detail {
+  position: relative;
+  background-color: #1e1e1e;
+  &__cover {
+    height: 100vh;
+    background: url('../images/background-player.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: 1;
+  }
+  &__overview {
+    margin-top: -200px;
+    height: auto;
+    overflow: hidden;
+    z-index: 2;
+    position: relative;
+    margin-left: 2em;
+    margin-right: 2em;
+    background-color: rgba(#1e1e1e, 0.5);
+    header {
+      height: 200px;
+    }
+    * {
+      margin: 0;
+    }
+  }
+} 

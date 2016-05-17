@@ -356,15 +356,15 @@ strong {
 
 .o-p-brand {
   display: block;
-  width: 160px;
+  width: 123px;
   margin: 0.35em 0 0 0;
   &__logo {
     display: block;
-    width: 160px;
-    height: 40px;
+    width: 123px;
+    height: 35px;
     @include hide-text;
-    background: url('../images/referee-logo.svg') no-repeat;
-    background-size: contain;
+    background: url('../images/referee-logo.png') no-repeat;
+
   }
 } 
 

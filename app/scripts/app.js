@@ -1,4 +1,50 @@
+ var Parallax = (function () {
 
+    var cover = document.querySelector('.o-detail__cover'),
+      overview = document.querySelector('.o-detail__overview'),
+      maxValue = 0,
+      minValue = 1,
+      endPoint1 = 0,
+      endPoint2 = window.innerHeight - 100,
+
+      updateLayout = function () {
+        
+      },
+
+      tweener = function () {
+        var currentY = window.scrollY,
+          proportion = (maxValue - minValue) / (endPoint2 - endPoint1),
+          opacity = (currentY - endPoint1) * proportion + minValue,
+          posY = ((opacity - minValue) / proportion) + endPoint1;
+          
+        TweenMax.to(cover, 0.5, { opacity: opacity, y: posY / 3 });
+      },
+
+      bind = function () {
+
+        window.addEventListener('resize', function onResize() {
+          updateLayout();
+        }, false);
+
+        window.addEventListener('scroll', function onScroll() {
+          tweener();
+        }, false);
+      },
+
+      init = function () {
+
+        var md = new MobileDetect(window.navigator.userAgent);
+
+        if (md.mobile()) {
+          return false;
+        }
+        
+        bind();
+      };
+
+    return { init: init }
+
+  })();
   
 var App = (function (window, $) {
   'use strict';
@@ -32,6 +78,9 @@ var App = (function (window, $) {
     rutaServ = 'http://pizarra.debbie.com.mx/',
 
     init = function () {
+      
+      Parallax.init();
+      
       //cache();
       bind();
       getReady();
