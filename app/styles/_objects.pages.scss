@@ -377,12 +377,6 @@ div[class^="o-form"] {
   }
 }
 
-
-.onepage-pagination li a:before,
-.onepage-pagination li a.active:before {
-  content: none;
-}
-
 section.o-pages__form {
   @include bp(320px,1024px) {
     height: auto !important;
