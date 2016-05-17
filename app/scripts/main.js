@@ -6,9 +6,13 @@
   if(domBody.hasClass('page--home')){
     App.init();
   }
-  window.parent.bindHash(function(hash){
-    App.setHash(hash);  
-  });
-  App.hashChange(window.parent.hashChange);
-  
+  if(typeof window.parent.bindHash === 'function')
+    window.parent.bindHash(function(hash){
+      App.setHash(hash);
+    });
+
+  if(typeof window.parent.hashChange === 'function'){
+    App.hashChange(window.parent.hashChange);
+  }
+
 })(window);

@@ -1,14 +1,37 @@
-var App = (function (window, $) {
 
+  
+var App = (function (window, $) {
   'use strict';
 
+    $.fn.scrollTo = function( target, options, callback ){
+      
+      if(typeof options == 'function' && arguments.length == 2){ callback = options; options = target; }
+      
+      var settings = $.extend({
+        scrollTarget  : target,
+        offsetTop     : 50,
+        duration      : 500,
+        easing        : 'swing'
+      }, options);
+      
+      return this.each(function(){
+        var scrollPane = $(this);
+        var scrollTarget = (typeof settings.scrollTarget == "number") ? settings.scrollTarget : $(settings.scrollTarget);
+        var scrollY = (typeof scrollTarget == "number") ? scrollTarget : scrollTarget.offset().top + scrollPane.scrollTop() - parseInt(settings.offsetTop);
+        scrollPane.animate({scrollTop : scrollY }, parseInt(settings.duration), settings.easing, function(){
+          if (typeof callback == 'function') { callback.call(this); }
+        });
+      });
+    };
   var
 
     md = new MobileDetect(window.navigator.userAgent),
 
-    elementType = md.mobile() ? '<img>' : '<video>',
+    //elementType = md.mobile() ? '<img>' : '<video>',
+    //elementSrc = md.mobile() ? 'images/unnamed.jpg' : 'media/teaser.mp4',
 
-    elementSrc = md.mobile() ? 'images/cover.jpg' : 'media/teaser.mp4',
+    elementType = '<img>',
+    elementSrc = 'images/unnamed.jpg',
 
     element = $(elementType, {}),
 
@@ -21,6 +44,11 @@ var App = (function (window, $) {
     mask = $('.o-mask'),
     
     hashCurrent,
+    quest, 
+
+    //rutaServ = 'http://pizarra.app/',
+  rutaServ = 'http://pizarra.local/',
+    //rutaServ = 'http://pizarra.debbie.com.mx/',
 
     container = root.find('.o-artwork__container'),
 
@@ -106,31 +134,10 @@ var App = (function (window, $) {
         'min-height': 0,
         'min-width': 0,
         'position': 'absolute',
-        'height': '100%',
+        'height':'100%'
       });
 
       element.parent().width(windowWidth).height(windowHeight);
-
-      /*var shift = 0;
-      if (windowWidth / windowHeight > aspectRatio) {
-        element.width(windowWidth).height('100%');
-        // shift the element up
-        var height = element.height();
-        shift = (height - windowHeight) / 2;
-        if (shift < 0) {
-          shift = 0;
-        }
-        element.css("top", -shift);
-      } else {
-        element.width('100%').height(windowHeight);
-        // shift the element left
-        var width = element.width();
-        shift = (width - windowWidth) / 2;
-        if (shift < 0) {
-          shift = 0;
-        }
-        element.css("left", -shift);
-      }*/
 
     },
 
@@ -159,12 +166,19 @@ var App = (function (window, $) {
        var href = window.location.href.substr(0,window.location.href.indexOf('#')) + '#' + hash,
         sections = $('.o-pages'),
         target = sections.find('#' + hash);
-        
+        console.log(target);
        history.pushState({}, document.title, href);
 
-       //main.moveTo(target.index() + 1);
        
        $('body').scrollTo(target);
+
+       if (md.mobile()) {
+          $('html,body').animate({ scrollTop: 500},'fast');
+         $('body').scrollTo(target);
+        } else {
+         main.moveTo(target.index() + 1);
+       }
+
        
        hashCurrent = hash;
      }
@@ -175,16 +189,29 @@ var App = (function (window, $) {
     },
     
     getReady = function () {
-
+      
+      /*$.post(rutaServ + 'trivia/inicia', function (data) {
+            $('head').append('<meta name="csrf-token" content="' + data.csrf +'">')
+        }, 'json')
+        .success(function () {
+          $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            xhrFields: {
+              withCredentials: true
+            }
+          });
+        });*/
+      
       $('.descubre').click(function () { $('.onepage-pagination li:nth-child(2) a').click(); });
 
       $('.registro').click(function () {
         $('.onepage-pagination li:nth-child(3) a').click();
       });
-      $('.quiz_section').not('.slide1, .slide2').hide();
       $('.comenzar').click(function () {
 
-        var flag = true, $slids = $('.slide1, .slide2');
+        var flag = true, $slids = $('.slide1');
 
         $slids.find('input').each(function () {
           if ($(this).val() == '' && !$(this).hasClass('noValida')) {
@@ -195,46 +222,45 @@ var App = (function (window, $) {
           }
         });
 
-        if (!isEmail($('.mlwEmail').val())) {
+        var $cor = notEmail($('.mlwEmail').val());
+        $('.mlwEmail').toggleClass('error', $cor);
+        if (!$('#terms').is(':checked') || $cor)
           flag = false;
-          $('.mlwEmail').addClass('error');
-        } else {
-          $('.mlwEmail').removeClass('error');
-        }
-
-        if (!$('#terms').is(':checked')) {
-          flag = false;
-        }
 
         $(document).off('scroll');
         pagination.fadeOut('fast');
 
         if (flag) {
-          var datos = {
-            email: $(".mlwEmail").val(),
-            action: 'rfr_mundomex_email'
-          };
-          $.post("http://referee.mx/wp-admin/admin-ajax.php", datos, function (data) {
-            if (data.success == 1) {
-              contador();
+          var datos = $('#datosRegistro').serialize();
+          
+          $.post(rutaServ + 'trivia/registro', datos, function (data) {
+
+            if (data.status == 1) {
               $('#btnFacebook').fadeOut('fast');
+              quest = { 'quest' : data.quest };
+              //window.parent.registro();
               $slids.fadeOut(500, function () {
-                $('.slide3').fadeIn('slow');
+                $('[class^="o-form"]').filter('.active').removeClass('active');
+                $('.o-control').filter('.active').removeClass('active');
+                $.post(rutaServ + 'trivia/quiz', quest, function (data) {
+                  console.log(data);
+                  $('.slide2').fadeIn('slow');
+                  $('#quizimage p').html(data.cuest);
+                  $('.o-form__file').addClass('active');
+                  $('.o-control.subir').addClass('active');
+                },'json');
               });
-              $('[class^="o-form"]').filter('.active').removeClass('active');
-              $('.o-form__quest').addClass('active');
-              $('.o-control').filter('.active').removeClass('active');
-              $('.o-control.segundo').addClass('active');
-              $('.nexxt').data('quest', 3);
-              window.parent.registro();
             } else {
-              $('.primero .mensaje').fadeIn('fast').html(data.message);
+              $('.primero .mensaje').fadeIn('fast').html(data.mensage);
+              $('.mlwEmail').toggleClass('error', data.status == 2);
               setTimeout(function () {
                 $('.primero .mensaje').fadeOut('slow');
               }, 15000);
             }
-
-          }, "json").fail(function (e) {
+          }, "json").done(function (data) {
+            console.log(data);
+            console.log('de primero');
+          }).fail(function (e) {
             $('.primero .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
             setTimeout(function () {
               $('.primero .mensaje').fadeOut('slow');
@@ -249,78 +275,117 @@ var App = (function (window, $) {
           }, 15000);
         }
       });
-      $('.nexxt').click(function () {
-        var $this = $(this);
-        var $data = $this.data('quest');
-        console.log($data);
-        if ($('.slide' + $data).find('textarea').val() == '') {
-          $('.slide' + $data).find('textarea').addClass('error');
+
+      $('.subirlo').click(function () {
+        var $file = $('#puzzle');
+
+        if ($file.val() == '') {
+          $file.addClass('error');
         } else {
-          if ($data <= 5) {
-            $('.slide' + $data).fadeOut(600, function () {
-              if ($data == 5) {
-                $('.o-control').filter('.active').removeClass('active');
-                $('.o-control.final').addClass('active');
-                $('.finalBtn').click(function () {
-                  if ($('.slide' + $data).find('textarea').val() == '') {
-                    $('.slide' + $data).find('textarea').addClass('error');
-                  } else {
-                    $('input[name="seconds"]').val($con);
-                    $.post("http://referee.mx/wp-admin/admin-ajax.php", $("#quizForm1").serialize(), function (data) {
-                      if (data.success == 1) {
-                        $('.slide' + $data).fadeOut(600);
-                        $('[class^="o-form"]').filter('.active').removeClass('active');
-                        $('.o-form__thanks').addClass('active');
-                        $('.o-control').filter('.active').removeClass('active');
-                        window.parent.termina();
-                        $(this).unbind('click');
-                      } else {
-                        $('.final .mensaje').fadeIn('fast').html(data.message);
-                        setTimeout(function () {
-                          $('.final .mensaje').fadeOut('slow');
-                        }, 15000);
-                      }
+          var file_data = $file.prop('files')[0];
+          var form_data = new FormData();
+          form_data.append('puzzle', file_data);
+          form_data.append('quest', quest.quest);
 
-                    }, "json").fail(function (e) {
+          $('[class^="o-form"]').filter('.active').removeClass('active');
+          $('.o-control').filter('.active').removeClass('active');
+          $('.slide2').fadeOut(500);
 
-                      $('.primero .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
-                      setTimeout(function () {
-                        $('.primero .mensaje').fadeOut('slow');
-                      }, 15000);
-                    });
-                  }
+          $.ajax({
+            url: rutaServ + 'trivia/imagen',
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'post',
+            success: function (data) {
+              console.log(data);
+              if (data.status == 1) {
+                $.post(rutaServ + 'trivia/quiz', quest, function (data) {
+                  $('.mlw_qmn_question').html(data.cuest);
+                  $('.o-form__quest').addClass('active');
+                  $('.o-control.segundo').addClass('active');
+                }, 'json').done(function (e) {
+                  $('#quizDatos').show();
+                  $('.answer_open_text').focus();
+                  $('.slide3').fadeIn('slow');
+                }).fail(function (e) {
+                  $('.subir .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
+                  setTimeout(function () {
+                    $('.subir .mensaje').fadeOut('slow');
+                  }, 15000);
                 });
               }
-              $data = $data + 1;
-              $('.slide' + $data).fadeIn('slow');
-              $this.data('quest', $data);
-            });
-          }
+            }
+          }).fail(function (e) {
+            $('.segundo .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
+            setTimeout(function () {
+              $('.segundo .mensaje').fadeOut('slow');
+            }, 15000);
+          });
+        }
+      });
+      
+      $('.nexxt').click(function () {
+        var $text = $('.answer_open_text');
+        if ($text.val() == '') {
+          $text.addClass('error');
+        } else {
+          $text.removeClass('error');
+          var anws = { 'quest' : quest.quest, 'anws' : $('.answer_open_text').val() };
+          $.post(rutaServ + 'trivia/answ', anws, function (data) {
+            if (data.status == 1) {
+              $('.slide3').fadeOut(500, function () {
+                $.post(rutaServ + 'trivia/quiz', quest, function (data) {
+                  if(data.status == '2'){
+                    $('[class^="o-form"]').filter('.active').removeClass('active');
+                    $('.o-form__thanks').addClass('active');
+                    $('.formulario').addClass('salida');
+                    $('.o-control').filter('.active').removeClass('active');
+                    //window.parent.termina();
+                  } else {
+                    $('.mlw_qmn_question').html(data.cuest);
+                    $text.val('').focus();
+                    $('.slide3').fadeIn('slow');
+                  }
+                },'json').done(function (data) {
+                  console.log(data);
+                  console.log('de done');
+                }).fail(function (e) {
+                  $('.segundo .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
+                  setTimeout(function () {
+                    $('.segundo .mensaje').fadeOut('slow');
+                  }, 15000);
+                });
+              });
+            }
+          }, 'json').fail(function (e) {
+            $('.segundo .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
+            setTimeout(function () {
+              $('.segundo .mensaje').fadeOut('slow');
+            }, 15000);
+          });
+          
         }
 
-      })
+      });
     },
 
     loadForms = function () {
     };
   var $con = 0;
-  function isEmail(email) {
+  function notEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    return regex.test(email);
+    return !regex.test(email);
   }
 
-  function contador() {
-    setTimeout(function () {
-      $con = $con + 1;
-      contador();
-    }, 1000)
-  }
   // public API
   return {
     init: init,
     loadForms: loadForms,
     setHash : setHash,
-    hashChange : hashChange,
+    hashChange : hashChange
   }
 
 })(window, jQuery);

@@ -22,7 +22,15 @@ body {
       pointer-events: none;
       background: $c-yellow-base url('../images/pat-fans.png') repeat-x center 100%;
       z-index: 0; 
-    } 
+    }
+    .formulario,
+    .despedida{
+      min-height: 190px;
+      &.salida {
+        min-height: inherit;
+        display: none;
+      }
+    }
   }  
 }
 
@@ -67,9 +75,10 @@ body {
 }
 
 
-#quizForm1 {
+form {
   display: inline-block;
   width: 100%;
+  min-height: 190px;
   .quiz_section {
     span {
       display: block;
@@ -83,7 +92,7 @@ body {
     textarea {
       border: 2px solid black;
       border-radius: 0;
-      background: transparent;
+      background: rgb(240, 224, 0);;
       padding: 8px 10px;
       margin: 10px 0 1px;
       width: 100%;
@@ -100,6 +109,12 @@ body {
   }
   .qmn_error input {
     border-color: red;
+  }
+
+  &.slide2,
+  &.slide3,
+  &.preguntas {
+    display: none;
   }
 }
 
@@ -121,7 +136,8 @@ div[class^="o-form"] {
   }
   &.final,
   &.segundo,
-  &.primero {
+  &.primero,
+  &.subir {
     display: none;
     opacity: 0;
     transition: 400ms opacity ease-in;
@@ -140,14 +156,16 @@ div[class^="o-form"] {
     p.mensaje {
       display: none;
       margin-top: 20px;
+      color: red;
+      font-size: 15px;
     }
   }
   .checkbox {
-    padding-left: 20px;
-    width: 50%;
+  padding-left: 20px;
     display: inline-block;
     text-align: left;
     vertical-align: middle;
+    color: #000;
     @media only screen and ( max-width: 990px ) {
       width: 100%;
     }
@@ -354,19 +372,14 @@ div[class^="o-form"] {
           transition: all 0.4s ease;
         }
       }
+
+      &.cargando {
+        padding-right: 70px;
+      }
     }
   }
 }
 
-.mlw_quiz_form {
-  br {
-    display: none;
-  }
-}
-
-.qmn_results_page {
-  display: none;
-}
 
 .onepage-pagination li a:before,
 .onepage-pagination li a.active:before {
@@ -392,3 +405,9 @@ a.o-link {
         color: black;
       }
     }
+
+.btnFb {
+  @media only screen and (min-width: 990px) {
+    position: absolute;
+  }
+}

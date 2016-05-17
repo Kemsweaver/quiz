@@ -56,12 +56,22 @@ strong {
 
 .o-base,
 .o-f {
+  &.o-premio{
+    p {
+      margin-top: 56px;
+    }
+  }
+  &__subtitle {
+    color: #000;
+    font-size: 19px;
+  }
   &__title {
     font-family: 'Acronym-ExtraBold';
     font-size: 40px;
     color: black;
+    margin: 0 0 10px;
     > small {
-      font-size: 24px;
+      font-size: 18px;
       color: #FFF100;
       padding: 5px 2px 2px;
       background: black;
@@ -94,14 +104,16 @@ strong {
     }
   }
 
-  ul, p {
+  ul,
+  li,
+  p {
     font-family: 'Acronym-Light';
     font-size: 16px;
+    color: #000;
   }
   &__text {
     margin-top: 70px;
     color: black;
-    text-align: left;
     text-align: center;
     font-size: 28px!important;
     font-weight: 600;
@@ -154,6 +166,17 @@ strong {
 .o-front {
   @include coverer;
   z-index: 50;
+  h1 {
+    color: #FFF100;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 5px black;
+  }
+  h2 {
+    color: #FFFFFF;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px black;
+  }
 }
 
 
@@ -226,7 +249,7 @@ strong {
   }
   &__label {
     font-size: 12px;
-    line-height: 23px;
+    line-height: 22px;
     padding-right: 2em;
     padding-left: 2em;
     text-transform: uppercase;
@@ -362,4 +385,12 @@ strong {
 .modal-body{
     height: 250px;
     overflow-y: auto;
+}
+
+.o-artwork {
+  &__container {
+    img {
+      width: 100%;
+    }
+  }
 }
