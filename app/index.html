@@ -62,8 +62,8 @@
         </div>
       </section>
 
-      <section class="o-page o-pages__base" id="mecanica">
-        <div class="borde">
+      <div class="borde">
+        <section class="o-page o-pages__base" id="mecanica">
           <div class="container u-text-center">
             <div class="o-copy">
               <h1>Con MundoMex y Referee, <br>
@@ -105,106 +105,107 @@
               </article>
             </div>
           </div>
-        </div>
-      </section>
-      <section class="o-page o-pages__form" id="registro">
-        <div class="u-relative container">
-          <div class="row">
-            <div class="col-xs-12 u-text-center btnFb">
-              <a href="#" class="o-button" id="btnFacebook">
-                    <span class="o-button__caret">
-                        <span class="o-button__fb-short"></span>
-                    </span>
-                <span class="o-button__label" id="facebook_login">Inicia con Facebook</span>
-              </a>
-            </div>
-            <div class="col-xs-12 col-md-12">
-              <div class="o-form__reg o-base active">
-                <h3 class="o-base__title">Registro</h3>
+        </section>
+        <section class="o-page o-pages__form" id="registro">
+          <div class="u-relative container">
+            <div class="row">
+              <div class="col-xs-12 u-text-center btnFb">
+                <a href="#" class="o-button" id="btnFacebook">
+                  <span class="o-button__caret">
+                      <span class="o-button__fb-short"></span>
+                  </span>
+                  <span class="o-button__label" id="facebook_login">Inicia con Facebook</span>
+                </a>
               </div>
-              <div class="o-form__file o-base">
-                <h3 class="o-base__title">Sube tu rompecabezas</h3>
-              </div>
-              <div class="o-form__quest o-base">
-                <h3 class="o-base__title">Preguntas</h3>
-              </div>
-              <div class="o-form__thanks o-base">
-                <h3 class="o-base__title">Gracias</h3>
-                <p class="o-base__text despedida"><strong>Si eres el afortunado ganador nos estaremos comunicando contigo</strong></p>
-              </div>
-            </div>
-          </div>
-          <div class="row formulario">
-            <form id="datosRegistro" action="" method="post" class="slide1" novalidate="">
-              <div class="col-xs-12 col-md-6">
-                <div class="quiz_section">
-                  <div class="mlw_qmn_message_before"></div>
-                  <span class="mlw_qmn_question">Nombre</span>
-                  <input type="text" class="" name="nombre" tabindex="1">
-                  <span class="mlw_qmn_question">Email</span>
-                  <input type="text" class="mlwEmail" name="email" tabindex="3">
+              <div class="col-xs-12 col-md-12">
+                <div class="o-form__reg o-base active">
+                  <h3 class="o-base__title">Registro</h3>
+                </div>
+                <div class="o-form__file o-base">
+                  <h3 class="o-base__title">Sube tu rompecabezas</h3>
+                </div>
+                <div class="o-form__quest o-base">
+                  <h3 class="o-base__title">Preguntas</h3>
+                </div>
+                <div class="o-form__thanks o-base">
+                  <h3 class="o-base__title">Gracias</h3>
+                  <p class="o-base__text despedida"><strong>Si eres el afortunado ganador nos estaremos comunicando contigo</strong></p>
                 </div>
               </div>
-              <div class="col-xs-12 col-md-6">
-                <div class="quiz_section">
-                  <span class="mlw_qmn_question">Número de teléfono</span>
-                  <input type="text" class="noValida" name="phone" tabindex="2">
-                  <span class="mlw_qmn_question">Twitter</span>
-                  <input type="text" class="mlw_answer_open_text mlwRequiredText" name="twitter" tabindex="4">
+            </div>
+            <div class="row formulario">
+              <form id="datosRegistro" action="" method="post" class="slide1" novalidate="">
+                <div class="col-xs-12 col-md-6">
+                  <div class="quiz_section">
+                    <div class="mlw_qmn_message_before"></div>
+                    <span class="mlw_qmn_question">Nombre</span>
+                    <input type="text" class="" name="nombre" tabindex="1">
+                    <span class="mlw_qmn_question">Email</span>
+                    <input type="text" class="mlwEmail" name="email" tabindex="3">
+                  </div>
                 </div>
-              </div>
-              <input type="hidden" name="FBID" class="noValida">
-            </form>
+                <div class="col-xs-12 col-md-6">
+                  <div class="quiz_section">
+                    <span class="mlw_qmn_question">Número de teléfono</span>
+                    <input type="text" class="noValida" name="phone" tabindex="2">
+                    <span class="mlw_qmn_question">Twitter</span>
+                    <input type="text" class="mlw_answer_open_text mlwRequiredText" name="twitter" tabindex="4">
+                  </div>
+                </div>
+                <input type="hidden" name="FBID" class="noValida">
+              </form>
 
-            <form id="quizimage" action="" method="post" class="slide2" novalidate="">
-              <div class="col-xs-12 col-md-6 col-md-offset-3">
-                <div class="u-text-center quiz_section">
-                  <h4>Selecciona el rompecabezas</h4>
-                  <input id="puzzle" class="archivo" type="file" name="puzzle" accept="image/*" />
-                  <p>Tu archivo debe ser una imagen</p>
+              <form id="quizimage" action="" method="post" class="slide2" novalidate="">
+                <div class="col-xs-12 col-md-6 col-md-offset-3">
+                  <div class="u-text-center quiz_section">
+                    <h4>Selecciona el rompecabezas</h4>
+                    <input id="puzzle" class="archivo" type="file" name="puzzle" accept="image/*" />
+                    <p>Tu archivo debe ser una imagen</p>
+                  </div>
                 </div>
-              </div>
-            </form>
+              </form>
 
-            <!-- Preguntas -->
-            <form id="quizDatos" action="" method="post" class="preguntas" novalidate="">
-              <div class="col-xs-12 col-md-8 col-md-offset-2">
-                <div class="quiz_section slide3">
-                  <span class="mlw_qmn_question"></span>
-                  <textarea class="answer_open_text" cols="70" rows="5" name="question"></textarea>
+              <!-- Preguntas -->
+              <form id="quizDatos" action="" method="post" class="preguntas" novalidate="">
+                <div class="col-xs-12 col-md-8 col-md-offset-2">
+                  <div class="quiz_section slide3">
+                    <span class="mlw_qmn_question"></span>
+                    <textarea class="answer_open_text" cols="70" rows="5" name="question"></textarea>
+                  </div>
                 </div>
-              </div>
-            </form>
-          </div>
-          <!-- Botones -->
-          <div class="row">
-            <div class="col-xs12 col-md-12">
-              <div class="o-control primero active">
-                <div class="checkbox">
-                  <input type="checkbox" value="1" class="" id="terms">
-                  <label for="terms">Acepto y leí los <a href="#" class="o-link" data-toggle="modal" data-target="#myModal">terminos y condiciones</a></label>
+              </form>
+            </div>
+            <!-- Botones -->
+            <div class="row">
+              <div class="col-xs12 col-md-12">
+                <div class="o-control primero active">
+                  <div class="checkbox">
+                    <input type="checkbox" value="1" class="" id="terms">
+                    <label for="terms">Acepto y leí los <a href="#" class="o-link" data-toggle="modal" data-target="#myModal">terminos y condiciones</a></label>
+                  </div>
+                  <div class="button">
+                    <button type="button" class="comenzar">Comenzar <div class="loading-pulse"></div></button>
+                  </div>
+                  <p class="mensaje"></p>
                 </div>
-                <div class="button">
-                  <button type="button" class="comenzar">Comenzar <div class="loading-pulse"></div></button>
+                <div class="o-control subir">
+                  <div class="button">
+                    <button type="button" class="subirlo">Subir <div class="loading-pulse"></div></button>
+                  </div>
+                  <p class="mensaje"></p>
                 </div>
-                <p class="mensaje"></p>
-              </div>
-              <div class="o-control subir">
-                <div class="button">
-                  <button type="button" class="subirlo">Subir <div class="loading-pulse"></div></button>
+                <div class="o-control segundo">
+                  <div class="button">
+                    <button type="button" class="nexxt">Siguiente <div class="loading-pulse"></div></button>
+                  </div>
+                  <p class="mensaje"></p>
                 </div>
-                <p class="mensaje"></p>
-              </div>
-              <div class="o-control segundo">
-                <div class="button">
-                  <button type="button" class="nexxt">Siguiente <div class="loading-pulse"></div></button>
-                </div>
-                <p class="mensaje"></p>
               </div>
             </div>
           </div>
-          </div>
-      </section>
+        </section>
+      </div>
+
     </main>
 
     <footer class="o-footer">

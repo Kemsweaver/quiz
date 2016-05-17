@@ -3,6 +3,10 @@ body {
   height: 100%;
 }
 
+.borde {
+  margin: 0 40px;
+  background: rgba(255,255,255,0.1);
+}
 .o-pages {
   background-color: black;
   &__home {
@@ -11,10 +15,6 @@ body {
     height: 100vh;
   }
   &__base {
-    .borde {
-      margin: 0 40px;
-      background: rgba(255,255,255,0.1);
-    }
   }
   &__form {
     .formulario{
@@ -80,14 +80,12 @@ form {
       padding: 8px 10px;
       margin: 10px 0 1px;
       width: 100%;
-      box-shadow: 5px 5px black;
       transition: all 0.4s ease;
       &:focus {
         outline: none;
       }
       &.error {
         border-color: #FF3434;
-        box-shadow: 5px 5px #FF3434;
       }
       &[type="file"] {
         display: block;
@@ -122,6 +120,7 @@ div[class^="o-form"] {
 
 .o-control {
   text-align: center;
+  margin-bottom: 100px;
   @media only screen and ( max-width: 990px ) {
     margin-bottom: 90px;
   }
@@ -197,7 +196,7 @@ div[class^="o-form"] {
         margin-left: -20px;
         border-radius: 50px;
         border: 2px solid #F0E000;
-        background-color: black;
+        background-color: transparent;
         transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
       }
       &:after {
@@ -215,7 +214,6 @@ div[class^="o-form"] {
       }
     }
     &:checked + label::before {
-      background-color: black;
     }
     &:checked + label::after {
       font-family: 'FontAwesome';
@@ -233,20 +231,15 @@ div[class^="o-form"] {
       color: black;
       background: #F0E000;
       border: none;
-      border-top: 2px solid black;
-      border-bottom: 2px solid black;
       border-radius: 0;
       display: inline-block;
-      padding: 9px 20px;
+      padding: 9px 28px;
       font-size: 12px;
       letter-spacing: 0.1em;
       margin-top: 40px;
       position: relative;
-      box-shadow: 5px 5px black;
-      border-left: 2px solid black;
       text-transform: uppercase;
       transition: all 0.4s ease;
-
       @media only screen and ( max-width: 1500px ) {
         margin-top: 10px;
       }
@@ -265,17 +258,6 @@ div[class^="o-form"] {
           opacity: 1;
         }
       }
-    }
-  }
-}
-
-section.o-pages__form {
-  @include bp(320px,1024px) {
-    height: auto !important;
-    .u-vert-center {
-      transform: none;
-      top: inherit;
-      
     }
   }
 }
