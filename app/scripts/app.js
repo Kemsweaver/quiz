@@ -44,8 +44,10 @@ var App = (function (window, $) {
     mask = $('.o-mask'),
     
     hashCurrent,
+    quest, 
 
-    rutaServ = 'http://pizarra.app/',
+    //rutaServ = 'http://pizarra.app/',
+    rutaServ = 'http://pizarra.local/',
     //rutaServ = 'http://pizarra.debbie.com.mx/',
 
     container = root.find('.o-artwork__container'),
@@ -226,18 +228,24 @@ var App = (function (window, $) {
 
         if (flag) {
           var datos = $('#datosRegistro').serialize();
+          
           $.post(rutaServ + 'trivia/registro', datos, function (data) {
+
             if (data.status == 1) {
               $('#btnFacebook').fadeOut('fast');
+              quest = { 'quest' : data.quest };
+              //window.parent.registro();
               $slids.fadeOut(500, function () {
-                $('.slide2').fadeIn('slow');
+                $('[class^="o-form"]').filter('.active').removeClass('active');
+                $('.o-control').filter('.active').removeClass('active');
+                $.post(rutaServ + 'trivia/quiz', quest, function (data) {
+                  console.log(data);
+                  $('.slide2').fadeIn('slow');
+                  $('#quizimage p').html(data.cuest);
+                  $('.o-form__file').addClass('active');
+                  $('.o-control.subir').addClass('active');
+                },'json');
               });
-              $('[class^="o-form"]').filter('.active').removeClass('active');
-              $('.o-form__quest').addClass('active');
-              $('.o-control').filter('.active').removeClass('active');
-              $('.o-control.segundo').addClass('active');
-              $('.nexxt').data('quest', 3);
-              window.parent.registro();
             } else {
               $('.primero .mensaje').fadeIn('fast').html(data.mensage);
               $('.mlwEmail').toggleClass('error', data.status == 2);
@@ -245,8 +253,10 @@ var App = (function (window, $) {
                 $('.primero .mensaje').fadeOut('slow');
               }, 15000);
             }
-
-          }, "json").fail(function (e) {
+          }, "json").done(function (data) {
+            console.log(data);
+            console.log('de primero');
+          }).fail(function (e) {
             $('.primero .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
             setTimeout(function () {
               $('.primero .mensaje').fadeOut('slow');
@@ -261,56 +271,71 @@ var App = (function (window, $) {
           }, 15000);
         }
       });
+
+      $('.subir').click(function () {
+
+        $('[class^="o-form"]').filter('.active').removeClass('active');
+        $('.o-form__quest').addClass('active');
+        $('.o-control').filter('.active').removeClass('active');
+        $('.o-control.segundo').addClass('active');
+        $('.slide2').fadeOut(500, function () {
+          
+          $.post(rutaServ + 'trivia/quiz', quest, function (data) {
+            console.log(data);
+            console.log('de subir');
+            $('.mlw_qmn_question').html(data.cuest);
+          },'json').done(function (e) {
+            $('#quizDatos').show();
+            $('.answer_open_text').focus();
+            $('.slide3').fadeIn('slow');
+          }).fail(function (e) {
+            $('.primero .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
+            setTimeout(function () {
+              $('.primero .mensaje').fadeOut('slow');
+            }, 15000);
+          });
+          
+        });
+      });
+      
       $('.nexxt').click(function () {
-        var $this = $(this);
-        var $data = $this.data('quest');
-        console.log($data);
-        if ($('.slide' + $data).find('textarea').val() == '') {
-          $('.slide' + $data).find('textarea').addClass('error');
+        var $text = $('.answer_open_text');
+        if ($text.val() == '') {
+          $text.addClass('error');
         } else {
-          if ($data <= 5) {
-            $('.slide' + $data).fadeOut(600, function () {
-              if ($data == 5) {
+          $text.removeClass('error');
+          $('.slide3').fadeOut(500, function () {
+            
+            $.post(rutaServ + 'trivia/quiz', quest, function (data) {
+              console.log(data);
+              console.log('de next');
+              if(data.status == '2'){
+                $('[class^="o-form"]').filter('.active').removeClass('active');
+                $('.o-form__thanks').addClass('active');
                 $('.o-control').filter('.active').removeClass('active');
-                $('.o-control.final').addClass('active');
-                $('.finalBtn').click(function () {
-                  if ($('.slide' + $data).find('textarea').val() == '') {
-                    $('.slide' + $data).find('textarea').addClass('error');
-                  } else {
-                    $('input[name="seconds"]').val($con);
-                    $.post(rutaServ + 'trivia/respuesta', $("#quizForm1").serialize(), function (data) {
-                      if (data.success == 1) {
-                        $('.slide' + $data).fadeOut(600);
-                        $('[class^="o-form"]').filter('.active').removeClass('active');
-                        $('.o-form__thanks').addClass('active');
-                        $('.o-control').filter('.active').removeClass('active');
-                        window.parent.termina();
-                        $(this).unbind('click');
-                      } else {
-                        $('.final .mensaje').fadeIn('fast').html(data.message);
-                        setTimeout(function () {
-                          $('.final .mensaje').fadeOut('slow');
-                        }, 15000);
-                      }
-
-                    }, "json").fail(function (e) {
-
-                      $('.primero .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
-                      setTimeout(function () {
-                        $('.primero .mensaje').fadeOut('slow');
-                      }, 15000);
-                    });
-                  }
-                });
+                //window.parent.termina();
+              } else {
+                $('.mlw_qmn_question').html(data.cuest);
+                $text.val('').focus();
+                $('.slide3').fadeIn('slow');
               }
-              $data = $data + 1;
-              $('.slide' + $data).fadeIn('slow');
-              $this.data('quest', $data);
+
+            },'json').done(function (data) {
+              console.log(data);
+              console.log('de done');
+            }).fail(function (e) {
+
+              $('.segundo .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
+              setTimeout(function () {
+                $('.segundo .mensaje').fadeOut('slow');
+              }, 15000);
             });
-          }
+            
+          });
+          
         }
 
-      })
+      });
     },
 
     loadForms = function () {

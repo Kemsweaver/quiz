@@ -103,6 +103,7 @@ form {
   }
 
   &.slide2,
+  &.slide3,
   &.preguntas {
     display: none;
   }
@@ -126,7 +127,8 @@ div[class^="o-form"] {
   }
   &.final,
   &.segundo,
-  &.primero {
+  &.primero,
+  &.subir {
     display: none;
     opacity: 0;
     transition: 400ms opacity ease-in;

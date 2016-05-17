@@ -147,14 +147,18 @@
                     <span class="o-button__label" id="facebook_login">Inicia con Facebook</span>
                   </a>
                 </div>
+                <div class="o-form__file o-base">
+                  <h3 class="o-base__title"><small>4.</small>Sube tu rompecabezas</h3>
+                  <span class="o-fly o-fly--left"></span>
+                </div>
                 <div class="o-form__quest o-base">
-                  <h3 class="o-base__title"><small>4.</small>Preguntas</h3>
+                  <h3 class="o-base__title"><small>5.</small>Preguntas</h3>
                   <span class="o-fly o-fly--left"></span>
                 </div>
                 <div class="o-form__thanks o-base">
-                  <h3 class="o-base__title"><small>5.</small>Gracias</h3>
+                  <h3 class="o-base__title"><small>6.</small>Gracias</h3>
                   <span class="o-fly o-fly--left"></span>
-                  <p class="o-base__text">Nos estaremos comunicando contigo</p>
+                  <p class="o-base__text">Si eres el afortunado ganador nos estaremos comunicando contigo</p>
                 </div>
               </div>
             </div>
@@ -181,36 +185,22 @@
               </form>
 
               <form id="quizimage" action="" method="post" class="formulario slide2" novalidate="">
+                <h4>Selecciona el archivo a subir</h4>
+                <p>Archivo para subir</p>
               </form>
 
+              <!-- Preguntas -->
               <form id="quizDatos" action="" method="post" class="formulario preguntas" novalidate="">
                 <div class="col-xs-12 col-md-8 col-md-offset-2">
                   <div class="quiz_section slide3">
-                    <span class="mlw_qmn_question">¿Cuál es el mejor lugar obtenido por México en un Mundial, fuera de casa? </span>
-                    <textarea class="mlw_answer_open_text mlwRequiredText" cols="70" rows="5" name="q1"></textarea>
-                  </div>
-                  <div class="quiz_section slide4">
-                    <span class="mlw_qmn_question">¿Máximo anotador mexicano en Copas del Mundo? </span>
-                    <textarea class="mlw_answer_open_text mlwRequiredText" cols="70" rows="5" name="q2"></textarea>
-                  </div>
-                  <div class="quiz_section slide5">
-                    <span class="mlw_qmn_question"> ¿A qué Selección le ganó el Tri dos veces en mundiales celebrados en México?</span>
-                    <textarea class="mlw_answer_open_text mlwRequiredText" cols="70" rows="5" name="q3"></textarea>
-                  </div>
-                  <div class="quiz_section slide6">
-                    <span class="mlw_qmn_question">Único campeón goleador de México en una Copa América</span>
-                    <textarea class="mlw_answer_open_text mlwRequiredText" cols="70" rows="5" name="q4"></textarea>
+                    <span class="mlw_qmn_question"></span>
+                    <textarea class="answer_open_text" cols="70" rows="5" name="question"></textarea>
                   </div>
                 </div>
               </form>
+              <!-- Botones -->
               <div class="col-xs12 col-md-12">
                 <div class="o-control primero active">
-                  <!--
-                  <div class="checkbox">
-                    <input type="checkbox" value="1" class="" id="promo">
-                    <label for="promo">Deseo que Mundomex me haga llegar por correo electrónico y/o por SMS promociones de Futbol.</label>
-                  </div>
-                  -->
                   <div class="checkbox">
                     <input type="checkbox" value="1" class="" id="terms">
                     <label for="terms">Acepto y leí los <a href="#" class="o-link" data-toggle="modal" data-target="#myModal">terminos y condiciones</a></label>
@@ -220,15 +210,15 @@
                   </div>
                   <p class="mensaje"></p>
                 </div>
-                <div class="o-control segundo">
+                <div class="o-control subir">
                   <div class="button">
-                    <button type="button" class="nexxt"><span></span><i></i>Siguiente</button>
+                    <button type="button" class="subir"><span></span><i></i>Subir</button>
                   </div>
                   <p class="mensaje"></p>
                 </div>
-                <div class="o-control final">
+                <div class="o-control segundo">
                   <div class="button">
-                    <button type="button" class="finalBtn"><span></span><i></i>Terminar</button>
+                    <button type="button" class="nexxt"><span></span><i></i>Siguiente</button>
                   </div>
                   <p class="mensaje"></p>
                 </div>
