@@ -62,26 +62,31 @@ strong {
       margin-top: 56px;
     }
   }
-  &__subtitle {
-    color: #000;
-    font-size: 19px;
-  }
   &__title {
     color: $c-yellow-base;
     font-family: 'Acronym-ExtraBold';
-    font-size: 80px;
+    font-size: 170px;
     margin: 0 0 10px;
-    @include bp(320px, 700px) {
-      padding-left: 20px;
+    @include bp(320px, 900px) {
+      font-size: 70px;
     }
   }
-
+  &__subtitle {
+    color: $c-yellow-base;
+    font-size: 19px;
+  }
+  &__expli {
+    margin-bottom: 100px;
+  }
   ul,
   li,
   p {
     font-family: 'Acronym-Light';
     font-size: 16px;
-    color: #000;
+    color: white;
+    list-style: none;
+    padding: 0;
+    line-height: 1.7;
   }
   &__text {
     margin-top: 70px;
@@ -89,6 +94,16 @@ strong {
     text-align: center;
     font-size: 28px!important;
     font-weight: 600;
+  }
+  span {
+    font-size: 140px;
+    color: $c-yellow-base;
+    margin: 15vh 0 10px;
+    font-weight: bolder;
+    display: block;
+    @include bp(320px, 900px) {
+      font-size: 70px;
+    }
   }
 } 
 
@@ -104,24 +119,6 @@ strong {
     float: right;
   }
 }
-
-.onepage-pagination {
-   li {
-     margin-bottom: 4px;
-      a {
-        display: block;
-        transition: all 100ms ease-in;
-        padding: 0;
-        width: 8px;
-        height: 24px;
-        background-color: black;
-        opacity: 0.5;
-        &.active {
-          opacity: 1;
-        }
-    } 
-  }
-} 
 
 .o-copy {
   text-align: left;

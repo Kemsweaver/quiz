@@ -277,22 +277,14 @@ section.o-pages__form {
 }
 
 a.o-link {
-      color: black;
-      text-decoration: underline;
-      &:hover, 
-      &:focus {
-        color: black;
-      }
-    }
-
-.btnFb {
-  margin: 0 auto 40px;
-  @media only screen and (min-width: 990px) {
-    position: absolute;
-    margin: 0;
-    z-index: 10;
+  color: black;
+  text-decoration: underline;
+  &:hover,
+  &:focus {
+    color: black;
   }
 }
+
 $base-line-height: 20px;
 $white: rgb(0, 0, 0);
 $off-white: rgba($white, 0.2);
