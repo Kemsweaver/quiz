@@ -7,47 +7,31 @@ body {
   background: $c-yellow-base;
 } 
 .o-pages {
+  background-color: black;
   &__home {
      overflow: hidden;
     position: relative;
     height: 100vh;
-    background-color: $c-yellow-base;
   }
-  
-  &__base,
-  &__form {
-    &:after {
-      @include coverer;
-      content: '';
-      pointer-events: none;
-      background: $c-yellow-base url('../images/pat-fans.png') repeat-x center 100%;
-      z-index: 0;
-      @include bp(320px, 700px) {
-        background: #fff100
-      }
+  &__base {
+    .borde {
+      margin: 0 40px;
+      background: rgba(255,255,255,0.1);
     }
-    .formulario,
-    .despedida{
+  }
+  &__form {
+    .formulario{
       min-height: 190px;
       &.salida {
         min-height: inherit;
         display: none;
       }
     }
-  }  
-}
-
-.o-artwork {
- 
-  &__copy {
-   @include coverer;
-   z-index: 30;
-   background-color: #fff;
-   .container-fluid {
-     position: relative;
-     height: 100vh;
-   }
-  } 
+    .despedida {
+      min-height: 190px;
+      margin-bottom: 100px;
+    }
+  }
 }
 
 #brand {
@@ -385,6 +369,9 @@ div[class^="o-form"] {
 
       &.cargando {
         padding-right: 70px;
+        .loading-pulse {
+          opacity: 1;
+        }
       }
     }
   }
@@ -422,5 +409,47 @@ a.o-link {
     position: absolute;
     margin: 0;
     z-index: 10;
+  }
+}
+$base-line-height: 20px;
+$white: rgb(0, 0, 0);
+$off-white: rgba($white, 0.2);
+$spin-duration: 1s;
+$pulse-duration: 750ms;
+
+@keyframes pulse {
+  50% {
+    background: $white;
+  }
+}
+
+.loading-pulse {
+  position: absolute;
+  opacity: 0;
+  right: 14%;
+  top: 20%;
+  transition: .5s opacity ease;
+  width: ($base-line-height / 4);
+  height: $base-line-height;
+  background: $off-white;
+  animation: pulse $pulse-duration infinite;
+  animation-delay: ($pulse-duration / 3);
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    display: block;
+    height: ($base-line-height / 1.5);
+    width: ($base-line-height / 4);
+    background: $off-white;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: pulse $pulse-duration infinite;
+  }
+  &:before {
+    left: -($base-line-height / 2);
+  }
+  &:after {
+    left: ($base-line-height / 2);
+    animation-delay: ($pulse-duration / 1.5);
   }
 }
