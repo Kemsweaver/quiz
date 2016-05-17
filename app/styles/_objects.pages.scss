@@ -21,7 +21,10 @@ body {
       content: '';
       pointer-events: none;
       background: $c-yellow-base url('../images/pat-fans.png') repeat-x center 100%;
-      z-index: 0; 
+      z-index: 0;
+      @include bp(320px, 700px) {
+        background: #fff100
+      }
     }
     .formulario,
     .despedida{
@@ -104,6 +107,13 @@ form {
       &.error {
         border-color: #FF3434;
         box-shadow: 5px 5px #FF3434;
+      }
+      &[type="file"] {
+        display: block;
+        margin: 10px auto 20px;
+        vertical-align: middle;
+        line-height: 1;
+        align-items: center;
       }
     }
   }
@@ -407,7 +417,10 @@ a.o-link {
     }
 
 .btnFb {
+  margin: 0 auto 40px;
   @media only screen and (min-width: 990px) {
     position: absolute;
+    margin: 0;
+    z-index: 10;
   }
 }

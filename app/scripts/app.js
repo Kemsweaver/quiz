@@ -46,9 +46,7 @@ var App = (function (window, $) {
     hashCurrent,
     quest, 
 
-    //rutaServ = 'http://pizarra.app/',
-  rutaServ = 'http://pizarra.local/',
-    //rutaServ = 'http://pizarra.debbie.com.mx/',
+    rutaServ = 'http://pizarra.debbie.com.mx/',
 
     container = root.find('.o-artwork__container'),
 
@@ -190,20 +188,6 @@ var App = (function (window, $) {
     
     getReady = function () {
       
-      /*$.post(rutaServ + 'trivia/inicia', function (data) {
-            $('head').append('<meta name="csrf-token" content="' + data.csrf +'">')
-        }, 'json')
-        .success(function () {
-          $.ajaxSetup({
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            xhrFields: {
-              withCredentials: true
-            }
-          });
-        });*/
-      
       $('.descubre').click(function () { $('.onepage-pagination li:nth-child(2) a').click(); });
 
       $('.registro').click(function () {
@@ -243,7 +227,6 @@ var App = (function (window, $) {
                 $('[class^="o-form"]').filter('.active').removeClass('active');
                 $('.o-control').filter('.active').removeClass('active');
                 $.post(rutaServ + 'trivia/quiz', quest, function (data) {
-                  console.log(data);
                   $('.slide2').fadeIn('slow');
                   $('#quizimage p').html(data.cuest);
                   $('.o-form__file').addClass('active');
@@ -258,16 +241,12 @@ var App = (function (window, $) {
               }, 15000);
             }
           }, "json").done(function (data) {
-            console.log(data);
-            console.log('de primero');
           }).fail(function (e) {
             $('.primero .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
             setTimeout(function () {
               $('.primero .mensaje').fadeOut('slow');
             }, 15000);
           });
-
-
         } else {
           $('.primero .mensaje').fadeIn('fast').html('Debes llenar todos los campos y aceptar los terminos de Mundomex');
           setTimeout(function () {
@@ -300,7 +279,6 @@ var App = (function (window, $) {
             data: form_data,
             type: 'post',
             success: function (data) {
-              console.log(data);
               if (data.status == 1) {
                 $.post(rutaServ + 'trivia/quiz', quest, function (data) {
                   $('.mlw_qmn_question').html(data.cuest);
@@ -350,8 +328,6 @@ var App = (function (window, $) {
                     $('.slide3').fadeIn('slow');
                   }
                 },'json').done(function (data) {
-                  console.log(data);
-                  console.log('de done');
                 }).fail(function (e) {
                   $('.segundo .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
                   setTimeout(function () {
