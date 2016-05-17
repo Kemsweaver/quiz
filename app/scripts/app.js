@@ -46,8 +46,8 @@ var App = (function (window, $) {
     hashCurrent,
     quest, 
 
-    //rutaServ = 'http://pizarra.app/',
-    rutaServ = 'http://pizarra.local/',
+    rutaServ = 'http://pizarra.app/',
+  //rutaServ = 'http://pizarra.local/',
     //rutaServ = 'http://pizarra.debbie.com.mx/',
 
     container = root.find('.o-artwork__container'),
@@ -272,26 +272,23 @@ var App = (function (window, $) {
         }
       });
 
-      $('.subir').click(function () {
+      $('.subirlo').click(function () {
 
         $('[class^="o-form"]').filter('.active').removeClass('active');
-        $('.o-form__quest').addClass('active');
         $('.o-control').filter('.active').removeClass('active');
-        $('.o-control.segundo').addClass('active');
         $('.slide2').fadeOut(500, function () {
-          
           $.post(rutaServ + 'trivia/quiz', quest, function (data) {
-            console.log(data);
-            console.log('de subir');
             $('.mlw_qmn_question').html(data.cuest);
+            $('.o-form__quest').addClass('active');
+            $('.o-control.segundo').addClass('active');
           },'json').done(function (e) {
             $('#quizDatos').show();
             $('.answer_open_text').focus();
             $('.slide3').fadeIn('slow');
           }).fail(function (e) {
-            $('.primero .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
+            $('.subir .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
             setTimeout(function () {
-              $('.primero .mensaje').fadeOut('slow');
+              $('.subir .mensaje').fadeOut('slow');
             }, 15000);
           });
           
@@ -304,34 +301,39 @@ var App = (function (window, $) {
           $text.addClass('error');
         } else {
           $text.removeClass('error');
-          $('.slide3').fadeOut(500, function () {
-            
-            $.post(rutaServ + 'trivia/quiz', quest, function (data) {
-              console.log(data);
-              console.log('de next');
-              if(data.status == '2'){
-                $('[class^="o-form"]').filter('.active').removeClass('active');
-                $('.o-form__thanks').addClass('active');
-                $('.o-control').filter('.active').removeClass('active');
-                //window.parent.termina();
-              } else {
-                $('.mlw_qmn_question').html(data.cuest);
-                $text.val('').focus();
-                $('.slide3').fadeIn('slow');
-              }
-
-            },'json').done(function (data) {
-              console.log(data);
-              console.log('de done');
-            }).fail(function (e) {
-
-              $('.segundo .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
-              setTimeout(function () {
-                $('.segundo .mensaje').fadeOut('slow');
-              }, 15000);
-            });
-            
-          });
+          var anws = { 'quest' : quest.quest, 'anws' : $('.answer_open_text').val() };
+          $.post(rutaServ + 'trivia/answ', anws, function (data) {
+            if (data.status == 1) {
+              $('.slide3').fadeOut(500, function () {
+                $.post(rutaServ + 'trivia/quiz', quest, function (data) {
+                  if(data.status == '2'){
+                    $('[class^="o-form"]').filter('.active').removeClass('active');
+                    $('.o-form__thanks').addClass('active');
+                    $('.formulario').addClass('salida');
+                    $('.o-control').filter('.active').removeClass('active');
+                    //window.parent.termina();
+                  } else {
+                    $('.mlw_qmn_question').html(data.cuest);
+                    $text.val('').focus();
+                    $('.slide3').fadeIn('slow');
+                  }
+                },'json').done(function (data) {
+                  console.log(data);
+                  console.log('de done');
+                }).fail(function (e) {
+                  $('.segundo .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
+                  setTimeout(function () {
+                    $('.segundo .mensaje').fadeOut('slow');
+                  }, 15000);
+                });
+              });
+            }
+          }, 'json').fail(function (e) {
+            $('.segundo .mensaje').fadeIn('fast').html('Es imposible conectarse con el servidor en este momento, por favor intente mas tarde.');
+            setTimeout(function () {
+              $('.segundo .mensaje').fadeOut('slow');
+            }, 15000);
+          });;
           
         }
 

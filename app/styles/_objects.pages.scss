@@ -22,7 +22,15 @@ body {
       pointer-events: none;
       background: $c-yellow-base url('../images/pat-fans.png') repeat-x center 100%;
       z-index: 0; 
-    } 
+    }
+    .formulario,
+    .despedida{
+      min-height: 190px;
+      &.salida {
+        min-height: inherit;
+        display: none;
+      }
+    }
   }  
 }
 
@@ -70,6 +78,7 @@ body {
 form {
   display: inline-block;
   width: 100%;
+  min-height: 190px;
   .quiz_section {
     span {
       display: block;
@@ -396,3 +405,9 @@ a.o-link {
         color: black;
       }
     }
+
+.btnFb {
+  @media only screen and (min-width: 990px) {
+    position: absolute;
+  }
+}
