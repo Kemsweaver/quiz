@@ -249,121 +249,9 @@ div[class^="o-form"] {
       &:focus {
         outline: none;
       }
-      &:after{
-        content: ' ';
-        position: absolute;
-        height: 100%;
-        width: 10px;
-        top: 0;
-        right: -10px;
-        border-right: 10px solid transparent;
-        border-top: 35px solid #F0E000;
-        border-bottom: none;
-        border-left: 0 solid #F0E000;
-        z-index: 3;
-        transition: all 0.4s ease;
-      }
-      &:before{
-        content: ' ';
-        position: absolute;
-        height: 100%;
-        width: 10px;
-        top: -2px;
-        right: -13px;
-        border-left: 0 solid transparent;
-        border-top: 40px solid black;
-        border-bottom: none;
-        border-right: 13px solid transparent;
-        transition: all 0.4s ease;
-        z-index: 2;
-      }
-      &:hover {
-        background: black;
-        color: #F0E000;
-        &:after {
-          border-top: 35px solid black;
-          border-left: 0 solid black;
-        }
-        span:after {
-          border-bottom: 35px solid black;
-          border-right: 0 solid black;
-        }
-      }
       &:active {
         color: #BDBB97;
       }
-      i {
-        position: absolute;
-        overflow: visible;
-        background: transparent;
-        width: 100%;
-        height: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 1;
-        transition: all 0.4s ease;
-        &:after {
-          transition: all 0.4s ease;
-          content: ' ';
-          position: absolute;
-          background: black;
-          left: -5px;
-          bottom: -7px;
-          width: 10px;
-          height: 5px;
-        }
-        &:before {
-          content: ' ';
-          position: absolute;
-          right: -15px;
-          bottom: -16px;
-          width: 0;
-          height: 0;
-          border: 10px solid transparent;
-          border-top: 37px solid black;
-          border-left-width: 0;
-          transition: all 0.4s ease;
-          z-index: 1;
-        }
-      }
-      span {
-        position: absolute;
-        overflow: visible;
-        background: transparent;
-        width: 0;
-        height: 0;
-        top: 0;
-        left: 0;
-        z-index: 2;
-        transition: all 0.4s ease;
-        &:after {
-          content: ' ';
-          position: absolute;
-          height: 100%;
-          width: 10px;
-          top: 0;
-          left: -10px;
-          border-left: 10px solid transparent;
-          border-bottom: 35px solid #F0E000;
-          border-top: none;
-          border-right: 0 solid #F0E000;
-          transition: all 0.4s ease;
-        }
-        &:before {
-          content: ' ';
-          position: absolute;
-          height: 100%;
-          width: 10px;
-          top: -2px;
-          left: -14px;
-          border-right: 0px solid transparent;
-          border-bottom: 40px solid black;
-          border-top: none;
-          border-left: 12px solid transparent;
-          transition: all 0.4s ease;
-        }
-      }
-
       &.cargando {
         padding-right: 70px;
         .loading-pulse {
@@ -386,22 +274,14 @@ section.o-pages__form {
 }
 
 a.o-link {
-      color: black;
-      text-decoration: underline;
-      &:hover, 
-      &:focus {
-        color: black;
-      }
-    }
-
-.btnFb {
-  margin: 0 auto 40px;
-  @media only screen and (min-width: 990px) {
-    position: absolute;
-    margin: 0;
-    z-index: 10;
+  color: black;
+  text-decoration: underline;
+  &:hover,
+  &:focus {
+    color: black;
   }
 }
+
 $base-line-height: 20px;
 $white: rgb(0, 0, 0);
 $off-white: rgba($white, 0.2);

@@ -62,37 +62,31 @@ strong {
       margin-top: 56px;
     }
   }
+  &__title {
+    color: $c-yellow-base;
+    font-family: 'Acronym-ExtraBold';
+    font-size: 170px;
+    margin: 0 0 10px;
+    @include bp(320px, 900px) {
+      font-size: 70px;
+    }
+  }
   &__subtitle {
-    color: #000;
+    color: $c-yellow-base;
     font-size: 19px;
   }
-  &__title {
-    font-family: 'Acronym-ExtraBold';
-    font-size: 40px;
-    color: black;
-    margin: 0 0 10px;
-    > small {
-      font-size: 18px;
-      color: #FFF100;
-      padding: 5px 2px 2px;
-      background: black;
-      position: relative;
-      margin-right: 30px;
-      @media only screen and (max-width: 700px) {
-        font-size: 24px;
-      }
-    }
-    @include bp(320px, 700px) {
-      padding-left: 20px;
-    }
+  &__expli {
+    margin-bottom: 100px;
   }
-
   ul,
   li,
   p {
     font-family: 'Acronym-Light';
     font-size: 16px;
-    color: #000;
+    color: white;
+    list-style: none;
+    padding: 0;
+    line-height: 1.7;
   }
   &__text {
     margin-top: 70px;
@@ -100,6 +94,16 @@ strong {
     text-align: center;
     font-size: 28px!important;
     font-weight: 600;
+  }
+  span {
+    font-size: 140px;
+    color: $c-yellow-base;
+    margin: 15vh 0 10px;
+    font-weight: bolder;
+    display: block;
+    @include bp(320px, 900px) {
+      font-size: 70px;
+    }
   }
 } 
 
@@ -115,24 +119,6 @@ strong {
     float: right;
   }
 }
-
-.onepage-pagination {
-   li {
-     margin-bottom: 4px;
-      a {
-        display: block;
-        transition: all 100ms ease-in;
-        padding: 0;
-        width: 8px;
-        height: 24px;
-        background-color: black;
-        opacity: 0.5;
-        &.active {
-          opacity: 1;
-        }
-    } 
-  }
-} 
 
 .o-copy {
   text-align: left;
@@ -351,9 +337,7 @@ strong {
     background: url('../images/mundomex-logo.svg') no-repeat center center;
     @include hide-text;
   }
-} 
-
-
+}
 .o-p-brand {
   display: block;
   width: 123px;
@@ -366,30 +350,11 @@ strong {
     background: url('../images/referee-logo.png') no-repeat;
 
   }
-} 
-
-.o-mask {
-  position: absolute !important;
-  padding-left: 29px;
 }
-
 .modal-dialog{
     overflow-y: initial !important
 }
 .modal-body{
     height: 250px;
     overflow-y: auto;
-}
-
-.o-artwork {
-  &__container {
-    img {
-      width: 100%;
-    }
-  }
-}
-/** parches one-page **/
-
-.disabled-onepage-scroll .onepage-wrapper .section {
-  height: initial;
 }
