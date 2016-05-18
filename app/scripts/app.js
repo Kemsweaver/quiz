@@ -17,7 +17,7 @@
           opacity = (currentY - endPoint1) * proportion + minValue,
           posY = ((opacity - minValue) / proportion) + endPoint1;
           
-        TweenMax.to(cover, 0.5, { opacity: opacity, y: posY / 3 });
+        TweenMax.to(cover, 1, { opacity: opacity, y: posY / 3 });
       },
 
       bind = function () {
