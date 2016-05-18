@@ -17,7 +17,7 @@
           opacity = (currentY - endPoint1) * proportion + minValue,
           posY = ((opacity - minValue) / proportion) + endPoint1;
           
-        TweenMax.to(cover, 0.5, { opacity: opacity, y: posY / 3 });
+        TweenMax.to(cover, 1, { opacity: opacity, y: posY / 3 });
       },
 
       bind = function () {
@@ -49,97 +49,25 @@
 var App = (function (window, $) {
   'use strict';
 
-    $.fn.scrollTo = function( target, options, callback ){
-      
-      if(typeof options == 'function' && arguments.length == 2){ callback = options; options = target; }
-      
-      var settings = $.extend({
-        scrollTarget  : target,
-        offsetTop     : 50,
-        duration      : 500,
-        easing        : 'swing'
-      }, options);
-      
-      return this.each(function(){
-        var scrollPane = $(this);
-        var scrollTarget = (typeof settings.scrollTarget == "number") ? settings.scrollTarget : $(settings.scrollTarget);
-        var scrollY = (typeof scrollTarget == "number") ? scrollTarget : scrollTarget.offset().top + scrollPane.scrollTop() - parseInt(settings.offsetTop);
-        scrollPane.animate({scrollTop : scrollY }, parseInt(settings.duration), settings.easing, function(){
-          if (typeof callback == 'function') { callback.call(this); }
-        });
-      });
-    };
-  var
-
-    md = new MobileDetect(window.navigator.userAgent),
-    hashCurrent,
-    quest, 
+  var quest, 
 
     rutaServ = 'http://pizarra.debbie.com.mx/',
 
     init = function () {
-      
       Parallax.init();
-      
-      //cache();
-      bind();
       getReady();
-    },
-
-    cache = function () {
-
-    },
-
-    bind = function () {
-
-      /*var resizeTimeout;
-
-      $(window).on('resize', function () {
-        clearTimeout(resizeTimeout);
-
-        resizeTimeout = setTimeout(function () {
-          updateLayout();
-        }, 100);
-
-      });*/
-
-      $('.modal-body').perfectScrollbar();
-    },
-
-
-    updateLayout = function () {
-
-
-    },
-    
-    setHash = function (hashParam) {
-      var hash = hashParam.replace('#','');
-      console.log(hash);
-    },
-
-    callback_hash,
-    hashChange = function (callback) {
-      callback_hash = callback;
     },
     
     getReady = function () {
-      
+      $('.modal-body').perfectScrollbar();
       $('a.o-btn-down').click(function(e){
         e.preventDefault();
         $('html, body').stop().animate({
           scrollTop : $('#dinamica').offset().top
         }, 1000);
       });
-      
-      $('.descubre').click(function () { $('.onepage-pagination li:nth-child(2) a').click(); });
-
-      $('.registro').click(function () {
-        $('.onepage-pagination li:nth-child(3) a').click();
-      });
       $('.comenzar').click(function () {
-
         var flag = true, $slids = $('.slide1');
-
         $slids.find('input').each(function () {
           if ($(this).val() == '' && !$(this).hasClass('noValida')) {
             $(this).addClass('error');
@@ -148,14 +76,11 @@ var App = (function (window, $) {
             $(this).removeClass('error');
           }
         });
-
         var $cor = notEmail($('.mlwEmail').val());
         $('.mlwEmail').toggleClass('error', $cor);
         if (!$('#terms').is(':checked') || $cor)
           flag = false;
-
         $(document).off('scroll');
-
         if (flag) {
           var datos = $('#datosRegistro').serialize();
           $('.primero button').addClass('cargando');
@@ -295,15 +220,9 @@ var App = (function (window, $) {
               $('.segundo .mensaje').fadeOut('slow');
             }, 15000);
           });
-          
         }
-
       });
-    },
-
-    loadForms = function () {
     };
-  var $con = 0;
   function notEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return !regex.test(email);
@@ -311,10 +230,7 @@ var App = (function (window, $) {
 
   // public API
   return {
-    init: init,
-    loadForms: loadForms,
-    setHash : setHash,
-    hashChange : hashChange
+    init: init
   }
 
 })(window, jQuery);
