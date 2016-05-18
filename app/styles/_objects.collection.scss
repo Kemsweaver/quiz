@@ -59,11 +59,17 @@ strong {
   &__title {
     color: $c-yellow-base;
     font-family: 'Acronym-ExtraBold';
-    font-size: 170px;
+    font-size: 20px;
     margin: 0 0 10px;
-    @include bp(320px, 900px) {
-      font-size: 70px;
-    }
+    @include bp(medium-up) {
+          font-size: 24px;
+     }
+     
+      @include bp(large-up) {
+       
+          font-size: 48px;
+        
+     }
   }
   &__subtitle {
     color: $c-yellow-base;
@@ -92,7 +98,7 @@ strong {
   span {
     font-size: 140px;
     color: $c-yellow-base;
-    margin: 15vh 0 10px;
+
     font-weight: bolder;
     display: block;
     @include bp(320px, 900px) {

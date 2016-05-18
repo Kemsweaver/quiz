@@ -124,6 +124,13 @@ var App = (function (window, $) {
     
     getReady = function () {
       
+      $('a.o-btn-down').click(function(e){
+        e.preventDefault();
+        $('html, body').stop().animate({
+          scrollTop : $('#registro').offset().top
+        }, 1000);
+      });
+      
       $('.descubre').click(function () { $('.onepage-pagination li:nth-child(2) a').click(); });
 
       $('.registro').click(function () {
