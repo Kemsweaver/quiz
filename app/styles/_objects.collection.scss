@@ -162,12 +162,10 @@ strong {
   z-index: 50;
 }
 
-
 .o-button {
   display: inline-block;
   vertical-align: middle;
-  color: white;
-  background-color: $c-fb-blue-base;
+  color: yellow;
   text-decoration: none;
   font-family: 'Acronym-Regular';
   transition: all 200ms ease;
@@ -176,37 +174,9 @@ strong {
     outline: none;
     color: white;
   }
-  &:before {
-    content: ' ';
-    position: absolute;
-    width: 0;
-    height: 0;
-    bottom: 0;
-    left: -14px;
-    border-left: 14px solid transparent;
-    border-bottom: 46px solid #24469F;
-    border-top: none;
-    border-right: 0 solid #24469F;
+  &:hover {
+    color:yellow;
   }
-  &:after {
-    content: ' ';
-    position: absolute;
-    width: 0;
-    height: 0;
-    top: 0;
-    right: -14px;
-    border-right: 14px solid transparent;
-    border-top: 46px solid #446DBD;
-    border-bottom: none;
-    border-left: 0 solid #446DBD;
-    transition: all 200ms ease;
-  }
-  &:hover::after {
-     border-right: 14px solid transparent;
-     border-top: 46px solid #24469F;
-     border-bottom: none;
-     border-left: 0 solid #24469F;
-   }
   &__caret,
   &__label {
     display: inline-block;
@@ -215,20 +185,10 @@ strong {
   }  
   
   &__caret {
-    background-color: $c-fb-blue-dark;
+    border: 2px solid yellow;
+    border-radius: 60px;
+    background-color: black;
     position: relative;
-    &:after {
-      content: ' ';
-      position: absolute;
-      width: 0;
-      height: 0;
-      top: 0;
-      right: -14px;
-      border-right: 14px solid transparent;
-      border-top: 46px solid #24469F;
-      border-bottom: none;
-      border-left: 0 solid #24469F;
-    }
   }
   &__label {
     font-size: 12px;
@@ -243,8 +203,10 @@ strong {
   &__fb-short {
     display: block;
     background: url('../images/fb-short.svg') no-repeat;
-    width: 10px;
+    width: 18px;
     height: 18px;
+    text-align: center;
+    background-position: center;
   }
   
   &__arrow {
@@ -254,9 +216,7 @@ strong {
     height: 18px;
   }
   &:hover {
-    text-decoration: none;
-    color: white;
-    background-color: $c-fb-blue-dark;
+    text-decoration: underline;
   }
   
   &--cta {
@@ -362,4 +322,8 @@ strong {
 .modal-body{
     height: 250px;
     overflow-y: auto;
+}
+
+.btnFb {
+  text-align: left;
 }
