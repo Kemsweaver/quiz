@@ -127,7 +127,7 @@ var App = (function (window, $) {
       $('a.o-btn-down').click(function(e){
         e.preventDefault();
         $('html, body').stop().animate({
-          scrollTop : $('#registro').offset().top
+          scrollTop : $('#dinamica').offset().top
         }, 1000);
       });
       
