@@ -5,7 +5,7 @@
       maxValue = 0,
       minValue = 1,
       endPoint1 = 0,
-      endPoint2 = window.innerHeight - 100,
+      endPoint2 = window.innerHeight - 200,
 
       updateLayout = function () {
         
